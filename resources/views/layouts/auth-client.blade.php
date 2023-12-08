@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>WEB</title>
+    <title>BIPNET</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="{{ url('assets/icon.png') }}" />
     <!-- Font Awesome icons (free version)-->
@@ -23,10 +23,11 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg bg-secondary text-uppercase fixed-top" id="mainNav">
         <div class="container">
-            <a class="brand" href="/home"><img class="brand-logo-dark" src="{{ url('assets/icon.png') }}"
-                    alt="" width="40px" height="40px" /></a>
-            <a class="navbar-brand" href="/home"> WEB</a>
-            <button class="navbar-toggler text-uppercase font-weight-bold bg-primary text-white rounded" type="button"
+        
+            <a class="brand" href="/home"><img class="brand-logo-dark" src="{{ asset('assets/img/portfolio/logo.webp') }}"
+                    alt="" width="150px" height="50px" /></a>
+            
+            <button class="navbar-toggler text-uppercase font-weight-bold bg-secondary text-white rounded" type="button"
                 data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
                 Menu

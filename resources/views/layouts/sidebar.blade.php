@@ -44,7 +44,7 @@
                     class="{{ 'turnos' == Request::is('turnos*') ? 'active' : '' }} or {{ 'detalleTurnos' == Request::is('detalleTurnos*') ? 'active' : '' }}">
                     <a href="#ServiceMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-home"></i>
-                        <b>Administración De Servicios</b>
+                        <b>Productos y Servicios </b>
                     </a>
                     <ul class="collapse list-unstyled" id="ServiceMenu">
                         <li>
@@ -86,18 +86,7 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-image"></i>
-                        <b>Portfolio</b>
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-question"></i>
-                        <b> FAQ</b>
-                    </a>
-                </li>
+                
                 <li>
                     <a href="#">
                         <i class="fas fa-paper-plane"></i>
