@@ -25,8 +25,8 @@ class EmpleadoSeeder extends Seeder
             'phone' => '60522212',
             'domicilio' => 'Santa Cruz',
             'estado' => '1',
-            'tipoc' => '0',
-            'tipoe' => '1',
+            'tipoV' => '0',
+            'tipoG' => '1',
         ]);
 
         User::create([
@@ -39,8 +39,8 @@ class EmpleadoSeeder extends Seeder
             'phone' => '60522214',
             'domicilio' => 'Santa Cruz',
             'estado' => '1',
-            'tipoc' => '0',
-            'tipoe' => '1',
+            'tipoV' => '0',
+            'tipoG' => '1',
         ]);
         
         User::create([
@@ -53,8 +53,8 @@ class EmpleadoSeeder extends Seeder
             'phone' => '60522211',
             'domicilio' => 'Santa Cruz',
             'estado' => '1',
-            'tipoc' => '0',
-            'tipoe' => '1',
+            'tipoV' => '0',
+            'tipoG' => '1',
         ]);
 
         User::create([
@@ -67,8 +67,8 @@ class EmpleadoSeeder extends Seeder
             'phone' => '60522213',
             'domicilio' => 'Santa Cruz',
             'estado' => '0',
-            'tipoc' => '0',
-            'tipoe' => '1',
+            'tipoV' => '0',
+            'tipoG' => '1',
         ]);
     }
 }

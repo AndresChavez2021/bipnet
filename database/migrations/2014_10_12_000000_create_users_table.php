@@ -25,8 +25,8 @@ return new class extends Migration
             $table->integer('phone')->unique();
             $table->string('domicilio')->nullable();
             $table->smallInteger('estado')->nullable();
-            $table->smallInteger('tipoc');
-            $table->smallInteger('tipoe');
+            $table->smallInteger('tipoV');
+            $table->smallInteger('tipoG');
             $table->rememberToken();
             $table->timestamps();
         });

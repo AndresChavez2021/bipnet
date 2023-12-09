@@ -26,7 +26,7 @@ class ClienteController extends Controller
      */
     public function index(Request $request)
     {
-        $clientes = User::select('*')->orderBy('id','ASC')->where('tipoc','=',1);
+        $clientes = User::select('*')->orderBy('id','ASC')->where('tipoV','=',1);
         $limit = (isset($request->limit)) ? $request->limit:10;
         if(isset($request->search)){
             $clientes = $clientes->where('id','like','%'.$request->search.'%')

@@ -28,8 +28,8 @@ class User extends Authenticatable
         'phone',
         'domicilio',
         'estado',
-        'tipoc',
-        'tipoe',
+        'tipoV',
+        'tipoG',
     ];
 
     /**

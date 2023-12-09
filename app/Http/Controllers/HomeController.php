@@ -10,12 +10,14 @@ class HomeController extends Controller
     public function index()
     {
         if (auth()->user()) {
-            $TipoC = auth()->user()->tipoc;
-            $TipoE = auth()->user()->tipoe;
-            if ($TipoC == 1) {
+            $TipoV = auth()->user()->tipoV;
+            $TipoG = auth()->user()->tipoG;
+            if ($TipoV == 1) {
+                //dd('TipoV');
                 return view('inicio');
+                //return view('home.index');
             } else {
-                if ($TipoE == 1) {
+                if ($TipoG == 1) {  
                     return view('home.index');
                 }
             }

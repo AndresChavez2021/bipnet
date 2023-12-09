@@ -22,7 +22,7 @@
 <body>
     <div id="app" class="wrapper">
         @auth
-            @if (auth()->user()->tipoe == 1)
+            @if (auth()->user()->tipoG == 1)
                 @include('layouts.sidebar')
             @endif
         @endauth
