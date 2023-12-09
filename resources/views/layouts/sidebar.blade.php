@@ -4,7 +4,7 @@
             <div class="sidebar-header">
 
                 <img class="img-fluid" src="{{ asset('assets/img/portfolio/logo.webp') }}" alt="Logo de BIPNET">
-               <strong>BN</strong>
+               
                 
             </div>
 

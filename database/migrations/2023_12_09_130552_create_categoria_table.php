@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('detalle_turnos', function (Blueprint $table) {
+        Schema::create('categoria', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('idemp');
-            $table->unsignedBigInteger('idturn');
-            $table->foreign('idemp')->references('id')->on('users');
-            $table->foreign('idturn')->references('id')->on('turnos');
+            $table->string('nombre');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detalle_turnos');
+        Schema::dropIfExists('categoria');
     }
 };
