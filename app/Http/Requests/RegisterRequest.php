@@ -34,8 +34,8 @@ class RegisterRequest extends FormRequest
             'phone' => ['required', 'unique:users,phone'],
             'domicilio' => [''],
             'estado' => [''],
-            'tipoV' => ['required'],
-            'tipoG' => ['required'],
+            //'tipoV' => ['required'],
+            //'tipoG' => ['required'],
         ];
     }
 }

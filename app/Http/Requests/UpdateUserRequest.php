@@ -34,8 +34,8 @@ class UpdateUserRequest extends FormRequest
             'phone' => ['required'],
             'domicilio' => [''],
             'estado' => [''],
-            'tipoV' => ['required'],
-            'tipoG' => ['required'],
+            //'tipoV' => ['required'],
+            //'tipoG' => ['required'],
         ];
     }
 }
