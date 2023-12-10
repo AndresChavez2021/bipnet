@@ -13,12 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('estado', function (Blueprint $table) {
+        Schema::create('estados', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
-            $table->smallInteger('tipo_O');// tipo oportunidad 
-            $table->smallInteger('tipo_C');//tipo cotizacion 
-            $table->smallInteger('tipo_V');//tipo Venta
+            $table->smallInteger('tipo_O')->nullable();// tipo oportunidad
+            $table->smallInteger('tipo_C')->nullable();//tipo cotizacion
+            $table->smallInteger('tipo_V')->nullable();//tipo Venta
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('estado');
+        Schema::dropIfExists('estados');
     }
 };

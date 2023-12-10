@@ -15,7 +15,15 @@ class EstadoController extends Controller
      */
     public function index()
     {
-        //
+        
+        $estados = Estado::paginate();
+
+        return view('estado.index', compact('estados'))
+            ->with('i', (request()->input('page', 1) - 1) * $estados->perPage());
+        //$estados = Estado::select('*')->orderBy('id','ASC')->get();
+        //$estados = Estado::all();
+        //dd( $estados );
+        //return view('estado.index', compact('estados'));
     }
 
     /**
@@ -25,7 +33,8 @@ class EstadoController extends Controller
      */
     public function create()
     {
-        //
+        $estado = new Estado();
+        return view('estado.create',compact('estado'));
     }
 
     /**
@@ -36,7 +45,15 @@ class EstadoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $request->validate([
+            'nombre' => 'required',
+           // 'tipo_O' => 'required|numeric',
+            //'tipo_C' => 'required|numeric',
+            //'tipo_V' => 'required|numeric',
+        ]);
+        
+        Estado::create($request->all());
+        return redirect()->route('estados.index')->with('success', 'Estado creado exitosamente');
     }
 
     /**
@@ -45,9 +62,10 @@ class EstadoController extends Controller
      * @param  \App\Models\Estado  $estado
      * @return \Illuminate\Http\Response
      */
-    public function show(Estado $estado)
+    public function show($id)
     {
-        //
+        $estado = Estado::findOrFail($id);
+        return view('estado.show', compact('estado'));
     }
 
     /**
@@ -56,9 +74,10 @@ class EstadoController extends Controller
      * @param  \App\Models\Estado  $estado
      * @return \Illuminate\Http\Response
      */
-    public function edit(Estado $estado)
+    public function edit($id)
     {
-        //
+        $estado = Estado::findOrFail($id);
+        return view('estado.edit', compact('estado'));
     }
 
     /**
@@ -68,9 +87,19 @@ class EstadoController extends Controller
      * @param  \App\Models\Estado  $estado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Estado $estado)
+    public function update(Request $request,$id)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            //'tipo_O' => 'required|numeric',
+            //'tipo_C' => 'required|numeric',
+            //'tipo_V' => 'required|numeric',
+        ]);
+
+        $estado = Estado::findOrFail($id);
+        $estado->update($request->all());
+
+        return redirect()->route('estados.index')->with('success', 'Estado actualizado exitosamente');
     }
 
     /**
@@ -79,8 +108,11 @@ class EstadoController extends Controller
      * @param  \App\Models\Estado  $estado
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Estado $estado)
+    public function destroy($id)
     {
-        //
+        $estado = Estado::findOrFail($id);
+        $estado->delete();
+
+        return redirect()->route('estados.index')->with('success', 'Estado eliminado exitosamente');
     }
 }

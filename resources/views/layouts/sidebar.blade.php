@@ -48,7 +48,7 @@
                     </a>
                     <ul class="collapse list-unstyled" id="ServiceMenu">
                         <li>
-                            <a href="#"><b>Nota De Servicio</b></a>
+                            <a href={{ url('/estados') }}><b>Etiquetas</b></a>
                         </li>
                         <li>
                             <a href="#"><b>Nota De Solicitud</b></a>

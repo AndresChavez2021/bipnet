@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreign('id_cliente')->references('id')->on('cliente')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_empleado')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_oportunidad')->references('id')->on('oportunidad_de_venta')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_estado')->references('id')->on('estado')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_estado')->references('id')->on('estados')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

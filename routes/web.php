@@ -13,8 +13,8 @@ use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\RolController;
 use App\Http\Controllers\TurnoController;
 use App\Http\Controllers\UserController;
-use App\Models\DetalleTurno;
 
+use App\Http\Controllers\EstadoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -51,4 +51,6 @@ Route::group(['middleware'=>['auth']], function(){
     route::resource('/turnos', TurnoController::class);
     route::resource('/detalleTurnos', DetalleTurnoController::class);
     route::resource('/roles', RolController::class);
+    route::resource('/estados', EstadoController::class);
+
 });
