@@ -20,10 +20,7 @@ class EstadoController extends Controller
 
         return view('estado.index', compact('estados'))
             ->with('i', (request()->input('page', 1) - 1) * $estados->perPage());
-        //$estados = Estado::select('*')->orderBy('id','ASC')->get();
-        //$estados = Estado::all();
-        //dd( $estados );
-        //return view('estado.index', compact('estados'));
+        
     }
 
     /**

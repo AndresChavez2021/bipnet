@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\CategoriaController' => $baseDir . '/app/Http/Controllers/CategoriaController.php',
     'App\\Http\\Controllers\\ClienteController' => $baseDir . '/app/Http/Controllers/ClienteController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Controllers\\EmpleadoController' => $baseDir . '/app/Http/Controllers/EmpleadoController.php',
@@ -40,6 +41,7 @@ return array(
     'App\\Http\\Requests\\UpdateUserRequest' => $baseDir . '/app/Http/Requests/UpdateUserRequest.php',
     'App\\Models\\Categoria' => $baseDir . '/app/Models/Categoria.php',
     'App\\Models\\Estado' => $baseDir . '/app/Models/Estado.php',
+    'App\\Models\\Producto_Servicio' => $baseDir . '/app/Models/Producto_Servicio.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Policies\\DetalleTurnoPolicy' => $baseDir . '/app/Policies/DetalleTurnoPolicy.php',
     'App\\Policies\\TurnoPolicy' => $baseDir . '/app/Policies/TurnoPolicy.php',
@@ -164,6 +166,7 @@ return array(
     'Database\\Factories\\DetalleTurnoFactory' => $baseDir . '/database/factories/DetalleTurnoFactory.php',
     'Database\\Factories\\TurnoFactory' => $baseDir . '/database/factories/TurnoFactory.php',
     'Database\\Factories\\UserFactory' => $baseDir . '/database/factories/UserFactory.php',
+    'Database\\Seeders\\CategoriasSeeder' => $baseDir . '/database/seeders/CategoriasSeeder.php',
     'Database\\Seeders\\ClienteSeeder' => $baseDir . '/database/seeders/ClienteSeeder.php',
     'Database\\Seeders\\DatabaseSeeder' => $baseDir . '/database/seeders/DatabaseSeeder.php',
     'Database\\Seeders\\EmpleadoSeeder' => $baseDir . '/database/seeders/EmpleadoSeeder.php',

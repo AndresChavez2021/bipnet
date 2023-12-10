@@ -79,14 +79,7 @@
                             <a href={{ url('/categorias') }}><b>Categorias</b></a>
                         </li>
                         <li>
-                            <a href="#"><b>Asistencia</b></a>
-                        </li>
-                        <li class="{{ 'turnos' == Request::is('turnos*') ? 'active' : '' }}">
-                            <a href="{{ url('/turnos') }}"><i class="fas fa-clock"></i> <b>Turnos</b></a>
-                        </li>
-                        <li class="{{ 'detalleTurnos' == Request::is('detalleTurnos*') ? 'active' : '' }}">
-                            <a href="{{ url('/detalleTurnos') }}"><i class="fas fa-user-clock"></i> <b>Asignar
-                                    Turno</b></a>
+                            <a href={{ url('/servicios') }}><b>Productos y servicios </b></a>
                         </li>
                     </ul>
                 </li>

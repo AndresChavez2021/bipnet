@@ -528,6 +528,7 @@ class ComposerStaticInitf534a2d962414c3899984bbf8c622531
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\CategoriaController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoriaController.php',
         'App\\Http\\Controllers\\ClienteController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClienteController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\EmpleadoController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmpleadoController.php',
@@ -560,6 +561,7 @@ class ComposerStaticInitf534a2d962414c3899984bbf8c622531
         'App\\Http\\Requests\\UpdateUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateUserRequest.php',
         'App\\Models\\Categoria' => __DIR__ . '/../..' . '/app/Models/Categoria.php',
         'App\\Models\\Estado' => __DIR__ . '/../..' . '/app/Models/Estado.php',
+        'App\\Models\\Producto_Servicio' => __DIR__ . '/../..' . '/app/Models/Producto_Servicio.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Policies\\DetalleTurnoPolicy' => __DIR__ . '/../..' . '/app/Policies/DetalleTurnoPolicy.php',
         'App\\Policies\\TurnoPolicy' => __DIR__ . '/../..' . '/app/Policies/TurnoPolicy.php',
@@ -684,6 +686,7 @@ class ComposerStaticInitf534a2d962414c3899984bbf8c622531
         'Database\\Factories\\DetalleTurnoFactory' => __DIR__ . '/../..' . '/database/factories/DetalleTurnoFactory.php',
         'Database\\Factories\\TurnoFactory' => __DIR__ . '/../..' . '/database/factories/TurnoFactory.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
+        'Database\\Seeders\\CategoriasSeeder' => __DIR__ . '/../..' . '/database/seeders/CategoriasSeeder.php',
         'Database\\Seeders\\ClienteSeeder' => __DIR__ . '/../..' . '/database/seeders/ClienteSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
         'Database\\Seeders\\EmpleadoSeeder' => __DIR__ . '/../..' . '/database/seeders/EmpleadoSeeder.php',
