@@ -1,23 +1,27 @@
 @extends('layouts.app-master')
 @section('content')
-    <div class="card mt-4">
-        <div class="card-header d-inline-flex">
-            <h1>Formulario - Crear Clientes</h1>
+    <br>
+    <section class="content container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+
+                @includeif('partials.errors')
+
+                <div class="card card-default">
+                    <div class="card-header">
+                        <span class="card-title"></span>
+                        <h1>REGISTRAR NUEVO CLIENTE</h1>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('clientes.store') }}" role="form" enctype="multipart/form-data">
+                            @csrf
+
+                            @include('clientes.partials.form')
+
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-header d-inline-flex">
-            <a href="{{ route('clientes.index') }}" class="btn btn-primary ml-auto">
-                <i class="fas fa-arrow-left"></i>
-                Volver</a>
-        </div>
-        <div class="card-body">
-            <form action="{{route('clientes.store')}}" method="POST" enctype="multipart/form-data" id="create">
-                @include('clientes.partials.form')
-            </form>
-        </div>
-        <div class="card-footer">
-            <Button class="btn btn-primary" form="create">
-                <i class="fas fa-plus"></i> Crear
-            </Button>
-        </div>
-    </div>
+    </section>
 @endsection

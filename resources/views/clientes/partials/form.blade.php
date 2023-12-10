@@ -1,73 +1,33 @@
-@csrf
-<div class="row">
-    <div class="col-12">
-        <div class="form-floating">
-            <input type="text" placeholder="name" class="form-control" name="name"
-                value="{{ isset($cliente) ? $cliente->name : old('name') }}">
-            <label>Nombre</label>
+<div class="box box-info padding-1">
+    <div class="box-body">
+
+        <div class="form-group">
+            {{ Form::label('Nombre') }}
+            {{ Form::text('nombre', $cliente->nombre, ['class' => 'form-control' . ($errors->has('ci') ? ' is-invalid' : ''), 'placeholder' => 'nombre del cliente']) }}
+            {!! $errors->first('ci', '<div class="invalid-feedback">:message</div>') !!}
         </div>
+        <hr>
+        <div class="form-group">
+            {{ Form::label('informacion sobre el contacto') }}
+            {{ Form::text('info_contacto', $cliente->info_contacto, ['class' => 'form-control' . ($errors->has('name') ? ' is-invalid' : ''), 'placeholder' => 'Name']) }}
+            {!! $errors->first('name', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <hr>
+        <div class="form-group">
+            {{ Form::label('email') }}
+            {{ Form::text('correo', $cliente->correo, ['class' => 'form-control' . ($errors->has('email') ? ' is-invalid' : ''), 'placeholder' => 'Email']) }}
+            {!! $errors->first('email', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <hr>
+        <div class="form-group">
+            {{ Form::label('phone') }}
+            {{ Form::text('phone', $cliente->phone, ['class' => 'form-control' . ($errors->has('telefono') ? ' is-invalid' : ''), 'placeholder' => 'Telefono']) }}
+            {!! $errors->first('phone', '<div class="invalid-feedback">:message</div>') !!}
+        </div>
+        <hr>
+    
+    <div class="box-footer mt20">
+        <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-    <div class="col-12">
-        <div class="form-floating">
-            <input type="text" placeholder="apellidos" class="form-control" name="apellidos"
-                value="{{ isset($cliente) ? $cliente->apellidos : old('apellidos') }}">
-            <label>Apellidos</label>
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="form-floating">
-            <input type="number" placeholder="ci" class="form-control" name="ci"
-                value="{{ isset($cliente) ? $cliente->ci : old('ci') }}">
-            <label>CI</label>
-        </div>
-    </div>
-    <div class="col-12">
-        <h5>Género</h5>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1" value="M"
-                @if ((isset($cliente->sexo) ? $cliente->sexo : old('sexo')) == 'M') checked @endif>
-            <label class="form-check-label" for="flexRadioDefault1">
-                Masculine
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="sexo" id="flexRadioDefault1" value="F"
-                @if ((isset($cliente->sexo) ? $cliente->sexo : old('sexo')) == 'F') checked @endif>
-            <label class="form-check-label" for="flexRadioDefault2">
-                Female
-            </label>
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="form-floating">
-            <input type="number" placeholder="phone" class="form-control" name="phone"
-                value="{{ isset($cliente) ? $cliente->phone : old('phone') }}">
-            <label>Teléfono</label>
-        </div>
-    </div>
-    <div class="col-12">
-        <div class="form-floating">
-            <input type="email" placeholder="email" class="form-control" name="email"
-                value="{{ isset($cliente) ? $cliente->email : old('email') }}">
-            <label>E-Mail</label>
-        </div>
-    </div>
-    @if ((isset($cliente->id) ? $cliente->id : '') == '')
-        <div class="col-12">
-            <div class="form-floating">
-                <input type="password" placeholder="password" class="form-control" name="password"
-                    value="{{ isset($cliente) ? $cliente->password : old('password') }}">
-                <label>Contraseña</label>
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="form-floating">
-                <input type="password" placeholder="password_confirmation" class="form-control"
-                    name="password_confirmation" value="{{ isset($cliente) ? $cliente->password : old('password') }}">
-                <label>Confirmar Contraseña</label>
-            </div>
-        </div>
-    @endif
-    <input type="hidden" name="tipoc" class="form-control" id="exampleInputPassword1" value="1">
-    <input type="hidden" name="tipoe" class="form-control" id="exampleInputPassword1" value="0">
 </div>
+

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Cliente;
 use Illuminate\Database\QueryException;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\UpdateUserRequest;
@@ -26,18 +26,12 @@ class ClienteController extends Controller
      */
     public function index(Request $request)
     {
-        $clientes = User::select('*')->orderBy('id','ASC')->where('tipoV','=',1);
-        $limit = (isset($request->limit)) ? $request->limit:10;
-        if(isset($request->search)){
-            $clientes = $clientes->where('id','like','%'.$request->search.'%')
-            ->orWhere('name','like','%'.$request->search.'%')
-            ->orWhere('apellidos','like','%'.$request->search.'%')
-            ->orWhere('email','like','%'.$request->search.'%')
-            ->orWhere('ci','like','%'.$request->search.'%')
-            ->orWhere('sexo','like','%'.$request->search.'%')
-            ->orWhere('phone','like','%'.$request->search.'%');
-        }
-        $clientes = $clientes->paginate($limit)->appends($request->all());
+        //$clientes = Cliente::select('*')->orderBy('id','ASC');
+        $clientes = Cliente::all();
+
+        //return view('clientes.index', compact('clientes'))
+           // ->with('i', (request()->input('page', 1) - 1) * $clientes->perPage());
+        // $clientes = Cliente::paginate();
         return view('clientes.index', compact('clientes'));
     }
 
@@ -47,8 +41,9 @@ class ClienteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('clientes.create');
+    { 
+        $cliente = new Cliente();
+        return view('clientes.create',compact('cliente'));
     }
 
     /**
@@ -57,10 +52,17 @@ class ClienteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RegisterRequest $request)
+    public function store(Request $request)
     {
-        User::create($request->validated());
-        return redirect()->route('clientes.index')->with('mensaje', 'cliente Agregado Con Éxito');
+       $request->validate([
+            'nombre' => 'required',
+            'info_contacto' => 'required',
+            'correo' => 'required',
+            'phone' => 'required',
+        ]);
+        
+        Cliente::create($request->all());
+        return redirect()->route('clientes.index')->with('success', 'cliente agregado exitosamente');
     }
 
     /**
@@ -71,7 +73,9 @@ class ClienteController extends Controller
      */
     public function show($id)
     {
-        $cliente = User::where('id', '=', $id)->firstOrFail();
+        $cliente = Cliente::findOrFail($id);
+      
+       // $cliente = User::where('id', '=', $id)->firstOrFail();
         return view('clientes.show', compact('cliente'));
     }
 
@@ -83,7 +87,8 @@ class ClienteController extends Controller
      */
     public function edit($id)
     {
-        $cliente = User::where('id', '=', $id)->firstOrFail();
+        $cliente = Cliente::findOrFail($id);
+       //$cliente = User::where('id', '=', $id)->firstOrFail();
         return view('clientes.edit', compact('cliente'));
     }
 
@@ -94,11 +99,19 @@ class ClienteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, $id)
+    public function update(Request $request,$id)
     {
-        $cliente = User::find($id);
-        $cliente->update($request->validated());
-        return redirect()->route('clientes.index')->with('message', 'Se ha actualizado los datos correctamente.');
+        $request->validate([
+            'nombre' => 'required',
+            'info_contacto' => 'required',
+            'correo' => 'required',
+            'phone' => 'required',
+        ]);
+
+        $cliente = Cliente::findOrFail($id);
+        $cliente->update($request->all());
+
+        return redirect()->route('clientes.index')->with('success', 'Cliente actualizado exitosamente');
     }
 
     /**
@@ -109,7 +122,7 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
-        $cliente = User::findOrFail($id);
+        $cliente = Cliente::findOrFail($id);
         try{
             $cliente->delete();
             return redirect()->route('clientes.index')->with('message', 'Se han borrado los datos correctamente.');

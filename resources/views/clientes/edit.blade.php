@@ -1,24 +1,28 @@
 @extends('layouts.app-master')
 @section('content')
-    <div class="card mt-4">
-        <div class="card-header d-inline-flex">
-            <h1>Formulario - Editar Clientes</h1>
+    <br>
+    <section class="content container-fluid">
+        <div class="">
+            <div class="col-md-12">
+
+                @includeif('partials.errors')
+
+                <div class="card card-default">
+                    <div class="card-header">
+                        <span class="card-title">Update Cliente</span>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('clientes.update', $cliente->id) }}" role="form"
+                            enctype="multipart/form-data">
+                            {{ method_field('PATCH') }}
+                            @csrf
+
+                            @include('clientes.partials.form')
+
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="card-header d-inline-flex">
-            <a href="{{ route('clientes.index') }}" class="btn btn-primary ml-auto">
-                <i class="fas fa-arrow-left"></i>
-                Volver</a>
-        </div>
-        <div class="card-body">
-            <form action="{{route('clientes.update', $cliente->id)}}" method="POST" enctype="multipart/form-data" id="update">
-                @method('PUT')
-                @include('clientes.partials.form')
-            </form>
-        </div>
-        <div class="card-footer">
-            <Button class="btn btn-primary" form="update">
-                <i class="fas fa-pencil-alt"></i> Editar
-            </Button>
-        </div>
-    </div>
+    </section>
 @endsection
