@@ -16,11 +16,10 @@
                     </a>
                 </li>
                 <li
-                    class="{{ 'empleados' == Request::is('empleados*') ? 'active' : '' }} or {{ 'clientes' == Request::is('clientes*') ? 'active' : '' }}
-                or {{ 'users' == Request::is('users*') ? 'active' : '' }} or {{ 'roles' == Request::is('roles*') ? 'active' : '' }}">
+                    class="">
                     <a href="#UserMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fa fa-users"></i>
-                        <b>Gestión De Usuarios</b>
+                        <b>USUARIOS</b>
                     </a>
                     <ul class="collapse list-unstyled" id="UserMenu">
                         <li class="{{ 'empleados' == Request::is('empleados*') ? 'active' : '' }}">
@@ -40,18 +39,44 @@
                         </li>
                     </ul>
                 </li>
+
                 <li
-                    class="{{ 'turnos' == Request::is('turnos*') ? 'active' : '' }} or {{ 'detalleTurnos' == Request::is('detalleTurnos*') ? 'active' : '' }}">
+                    class="">
+                    <a href="#UserMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fa fa-users"></i>
+                        <b>VENTAS</b>
+                    </a>
+                    <ul class="collapse list-unstyled" id="UserMenu">
+                        <li class="{{ 'empleados' == Request::is('empleados*') ? 'active' : '' }}">
+                            <a href="{{ url('/empleados') }}"><i class="fa fa-user-tie"></i> <b>Empleados</b></a>
+                        </li>
+                        <li class="{{ 'clientes' == Request::is('clientes*') ? 'active' : '' }}">
+                            <a href="{{ url('/clientes') }}"><i class="fa fa-user"></i> <b>Clientes</b></a>
+                        </li>
+                        <li class="{{ 'users' == Request::is('users*') ? 'active' : '' }}">
+                            <a href="{{ url('/users') }}"><i class="fa fa-users"></i> <b>Usuarios</b></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-clipboard"></i> <b>Bitácora</b></a>
+                        </li>
+                        <li class="{{ 'roles' == Request::is('roles*') ? 'active' : '' }}">
+                            <a href={{ url('/roles') }}><i class="fa fa-user-lock"></i> <b>Privilegios</b></a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li
+                    class="">
                     <a href="#ServiceMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-home"></i>
-                        <b>Productos y Servicios </b>
+                        <b>PRODUCTOS <br> Y SERVICIOS </b>
                     </a>
                     <ul class="collapse list-unstyled" id="ServiceMenu">
                         <li>
                             <a href={{ url('/estados') }}><b>Etiquetas</b></a>
                         </li>
                         <li>
-                            <a href="#"><b>Nota De Solicitud</b></a>
+                            <a href={{ url('/categorias') }}><b>Categorias</b></a>
                         </li>
                         <li>
                             <a href="#"><b>Asistencia</b></a>
@@ -65,25 +90,18 @@
                         </li>
                     </ul>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="fas fa-briefcase"></i>
-                        <b>About</b>
+                
+                <li
+                    class="">
+                    <a href="#ServiceMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-home"></i>
+                        <b>ANALISIS DE SERIE <br> TEMPORAL </b>
                     </a>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-copy"></i>
-                        <b>Pages</b>
-                    </a>
-                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <ul class="collapse list-unstyled" id="ServiceMenu">
                         <li>
-                            <a href="#"><b>Page 1</b></a>
+                            <a href={{ url('/estados') }}><b>Etiquetas</b></a>
                         </li>
-                        <li>
-                            <a href="#"><b>Page 2</b></a>
-                        </li>
-                        <li>
-                            <a href="#"><b>Page 3</b></a>
-                        </li>
+                        
                     </ul>
                 </li>
                 
