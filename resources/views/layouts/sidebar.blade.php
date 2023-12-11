@@ -15,8 +15,8 @@
                         <b>Home</b>
                     </a>
                 </li>
-                <li
-                    class="">
+
+                <li class="">
                     <a href="#UserMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fa fa-users"></i>
                         <b>USUARIOS</b>
@@ -39,34 +39,32 @@
                         </li>
                     </ul>
                 </li>
-
-                <li
-                    class="">
-                    <a href="#UserMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fa fa-users"></i>
-                        <b>VENTAS</b>
+                <li class="">
+                    <a href="#VentasMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-chart-line"></i>
+                            <b>VENTAS</b>
+                     </a>
+                    <ul class="collapse list-unstyled" id="VentasMenu">
+                              <!-- Agrega un nuevo ítem dentro de "Ventas" llamado "Oportunidades" -->
+                            <li>
+                                <a href="{{ url('/oportunidades') }}"><b>Oportunidades</b></a>
+                            </li>
+                     </ul>
+                </li>
+                
+                <li class="">
+                    <a href="#AnalisisMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-chart-bar"></i>
+                        <b>ANÁLISIS DE SERIE TEMPORAL</b>
                     </a>
-                    <ul class="collapse list-unstyled" id="UserMenu">
-                        <li class="{{ 'empleados' == Request::is('empleados*') ? 'active' : '' }}">
-                            <a href="{{ url('/empleados') }}"><i class="fa fa-user-tie"></i> <b>Empleados</b></a>
-                        </li>
-                        <li class="{{ 'clientes' == Request::is('clientes*') ? 'active' : '' }}">
-                            <a href="{{ url('/clientes') }}"><i class="fa fa-user"></i> <b>Clientes</b></a>
-                        </li>
-                        <li class="{{ 'users' == Request::is('users*') ? 'active' : '' }}">
-                            <a href="{{ url('/users') }}"><i class="fa fa-users"></i> <b>Usuarios</b></a>
-                        </li>
+                    <ul class="collapse list-unstyled" id="AnalisisMenu">
+                        <!-- Agrega un nuevo ítem dentro de "Análisis de Serie Temporal" llamado "Pronóstico de Ventas" -->
                         <li>
-                            <a href="#"><i class="fa fa-clipboard"></i> <b>Bitácora</b></a>
-                        </li>
-                        <li class="{{ 'roles' == Request::is('roles*') ? 'active' : '' }}">
-                            <a href={{ url('/roles') }}><i class="fa fa-user-lock"></i> <b>Privilegios</b></a>
+                            <a href="{{ url('/pronostico-ventas') }}"><b>Pronóstico de Ventas</b></a>
                         </li>
                     </ul>
                 </li>
-
-                <li
-                    class="">
+                <li class="">
                     <a href="#ServiceMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-home"></i>
                         <b>PRODUCTOS <br> Y SERVICIOS </b>
@@ -84,19 +82,7 @@
                     </ul>
                 </li>
                 
-                <li
-                    class="">
-                    <a href="#ServiceMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-home"></i>
-                        <b>ANALISIS DE SERIE <br> TEMPORAL </b>
-                    </a>
-                    <ul class="collapse list-unstyled" id="ServiceMenu">
-                        <li>
-                            <a href={{ url('/estados') }}><b>Etiquetas</b></a>
-                        </li>
-                        
-                    </ul>
-                </li>
+                
                 
                 <li>
                     <a href="#">

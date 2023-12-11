@@ -17,6 +17,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EstadoController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProductoServicioController;
+use App\Http\Controllers\OportunidadDeVentaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -57,4 +59,5 @@ Route::group(['middleware'=>['auth']], function(){
     route::resource('/estados', EstadoController::class);
     route::resource('/categorias', CategoriaController::class);
     route::resource('/servicios', ProductoServicioController::class);
+    route::resource('/oportunidades', OportunidadDeVentaController::class);
 });

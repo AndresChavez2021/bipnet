@@ -20,7 +20,7 @@ return new class extends Migration
             $table->float('monto_total');
             $table->unsignedBigInteger('id_oportunidad');
             $table->unsignedBigInteger('id_estado');
-            $table->foreign('id_oportunidad')->references('id')->on('oportunidad_de_venta')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_oportunidad')->references('id')->on('oportunidad_de_ventas')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_estado')->references('id')->on('estados')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

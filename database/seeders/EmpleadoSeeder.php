@@ -67,8 +67,21 @@ class EmpleadoSeeder extends Seeder
             'phone' => '60522213',
             'domicilio' => 'Santa Cruz',
             'estado' => '0',
-            'tipoV' => '0',
-            'tipoG' => '1',
+            'tipoV' => '1',
+            'tipoG' => '0',
+        ]);
+        User::create([
+            'name' => 'miguel',
+            'apellidos' => '',
+            'email' => 'm@gmail.com',
+            'password' => '123456',
+            'ci' => '9866343',
+            'sexo' => 'M',
+            'phone' => '6052265',
+            'domicilio' => 'Santa Cruz',
+            'estado' => '0',
+            'tipoV' => '1',
+            'tipoG' => '0',
         ]);
     }
 }

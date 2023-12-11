@@ -19,7 +19,7 @@ return new class extends Migration
             $table->datetime('fecha');
             $table->text('detalles');
             $table->unsignedBigInteger('id_oportunidad');
-            $table->foreign('id_oportunidad')->references('id')->on('oportunidad_de_venta')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_oportunidad')->references('id')->on('oportunidad_de_ventas')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

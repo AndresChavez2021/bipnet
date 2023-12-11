@@ -13,4 +13,9 @@ class Cliente extends Model
     protected $table = 'clientes';
 
     public $timestamps = true;
+
+    public function oportunidadesDeVenta()
+    {
+        return $this->hasMany(OportunidadDeVenta::class, 'id_cliente','id');
+    }
 }
