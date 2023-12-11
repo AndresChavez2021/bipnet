@@ -14,7 +14,7 @@
         {{ Form::label('nombre', 'Nombre') }}
         {{ Form::text('nombre', $oportunidad->nombre, ['class' => 'form-control' . ($errors->has('nombre') ? ' is-invalid' : ''), 'placeholder' => 'Ingrese el nombre']) }}
         {!! $errors->first('nombre', '<div class="invalid-feedback">:message</div>') !!}
-    </div>
+        </div>
         <div class="form-group">
             {{ Form::label('fecha_inicio', 'Fecha Inicio') }}
             {{ Form::date('fecha_inicio', $oportunidad->fecha_inicio, ['class' => 'form-control' . ($errors->has('fecha_inicio') ? ' is-invalid' : '')]) }}

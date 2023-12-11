@@ -42,7 +42,7 @@ class OportunidadDeVentaController extends Controller
     public function create()
     {
         $oportunidad = new OportunidadDeVenta();
-        $estado = Estado::pluck('nombre', 'id');
+        $estado = Estado::pluck('nombre', 'id'); //luego cambiar para que sea solo tipoO "tipo oportunidad"
         $cliente = Cliente::pluck('nombre', 'id');
         $empleado = auth()->user()->id;
         return view('oportunidades.create', compact('oportunidad','estado','cliente','empleado'));

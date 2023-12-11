@@ -1,27 +1,62 @@
-<!-- resources/views/oportunidades/show.blade.php -->
 @extends('layouts.app-master')
 
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-12">
-                <h1 class="mb-4">Detalles de la Oportunidad de Venta</h1>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $oportunidad->nombre }}</h5>
-                        <p class="card-text">
-                            <strong>Fecha Inicio:</strong> {{ $oportunidad->fecha_inicio }}<br>
-                            <strong>Monto Esperado:</strong> {{ $oportunidad->monto_esperado }}<br>
-                            <strong>Fecha Estimada de Cierre:</strong> {{ $oportunidad->fecha_estimada_cierre }}<br>
-                            <strong>Cliente:</strong> {{ optional($oportunidad->cliente)->nombre }}<br>
-                            <strong>Empleado:</strong> {{ optional($oportunidad->empleado)->name }}<br>
-                            <strong>Estado:</strong> {{ optional($oportunidad->estado)->nombre }}
-                        </p>
-                        <!-- Puedes agregar más detalles según sea necesario -->
-                    </div>
-                </div>
-                <a href="{{ route('oportunidades.index') }}" class="btn btn-primary mt-3">Volver</a>
-            </div>
-        </div>
-    </div>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-12">
+<div class="card">
+<div class="card-header">
+<div style="display: flex; justify-content: space-between; align-items: center;">
+<span id="card_title">
+Detalles de Oportunidad de Venta
+</span>
+<div class="float-right">
+<a href="{{ route('oportunidades.index') }}" class="btn btn-secondary btn-sm float-right"
+                                 data-placement="left">
+Volver
+</a>
+</div>
+</div>
+</div>
+<div class="card-body">
+<div class="table-responsive">
+<table class="table table-bordered">
+<tbody>
+<tr>
+<th>Nombre</th>
+<td>{{ $oportunidad->nombre }}</td>
+</tr>
+<tr>
+<th>Fecha Inicio</th>
+<td>{{ $oportunidad->fecha_inicio }}</td>
+</tr>
+<tr>
+<th>Monto Esperado</th>
+<td>{{ $oportunidad->monto_esperado }}</td>
+</tr>
+<tr>
+<th>Fecha Estimada de Cierre</th>
+<td>{{ $oportunidad->fecha_estimada_cierre }}</td>
+</tr>
+<tr>
+<th>Cliente</th>
+<td>{{ optional($oportunidad->cliente)->nombre }}</td>
+</tr>
+<tr>
+<th>Empleado</th>
+<td>{{ optional($oportunidad->empleado)->name }}</td>
+</tr>
+<tr>
+<th>Estado</th>
+<td>{{ optional($oportunidad->estado)->nombre }}</td>
+</tr>
+<!-- Puedes agregar más campos según tu modelo -->
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 @endsection

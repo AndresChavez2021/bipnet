@@ -49,6 +49,9 @@
                             <li>
                                 <a href="{{ url('/oportunidades') }}"><b>Oportunidades</b></a>
                             </li>
+                            <li>
+                                <a href="{{ url('/actividades') }}"><b>Actividades</b></a>
+                            </li>
                      </ul>
                 </li>
                 

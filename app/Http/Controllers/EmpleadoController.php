@@ -30,7 +30,7 @@ class EmpleadoController extends Controller
     {
         //$empleados = User::get()->where('tipoe','=','1');
         $empleados = User::select('*')->orderBy('id','ASC')->where('tipoG','=',1);
-        dd($empleados);
+        //dd($empleados);
         $limit = (isset($request->limit)) ? $request->limit:10;
         if(isset($request->search)){
             $empleados = $empleados->where('id','like','%'.$request->search.'%')

@@ -34,4 +34,9 @@ class OportunidadDeVenta extends Model
     {
         return $this->hasOne(Cliente::class,'id','id_cliente');
     }
+
+    public function actividades()
+    {
+    return $this->hasMany(Actividad::class, 'id_oportunidad', 'id');
+    }
 }
