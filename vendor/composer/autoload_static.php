@@ -533,6 +533,7 @@ class ComposerStaticInitf534a2d962414c3899984bbf8c622531
         'App\\Http\\Controllers\\ClienteController' => __DIR__ . '/../..' . '/app/Http/Controllers/ClienteController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\CotizacionController' => __DIR__ . '/../..' . '/app/Http/Controllers/CotizacionController.php',
+        'App\\Http\\Controllers\\CuotaController' => __DIR__ . '/../..' . '/app/Http/Controllers/CuotaController.php',
         'App\\Http\\Controllers\\DetalleServicioController' => __DIR__ . '/../..' . '/app/Http/Controllers/DetalleServicioController.php',
         'App\\Http\\Controllers\\EmpleadoController' => __DIR__ . '/../..' . '/app/Http/Controllers/EmpleadoController.php',
         'App\\Http\\Controllers\\EstadoController' => __DIR__ . '/../..' . '/app/Http/Controllers/EstadoController.php',

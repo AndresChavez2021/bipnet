@@ -19,6 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_cotizacion');
             $table->foreign('id_productos')->references('id')->on('producto__servicios')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_cotizacion')->references('id')->on('cotizacions')->onDelete('cascade')->onUpdate('cascade');
+            $table->smallInteger('cantidad'); //NEW
+            $table->float('precio_venta'); //NEW
             $table->timestamps();
         });
     }
