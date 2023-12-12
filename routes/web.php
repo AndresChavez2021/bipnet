@@ -19,6 +19,7 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProductoServicioController;
 use App\Http\Controllers\OportunidadDeVentaController;
 use App\Http\Controllers\ActividadController;
+use App\Http\Controllers\CotizacionController;
 
 
 
@@ -63,5 +64,6 @@ Route::group(['middleware'=>['auth']], function(){
     route::resource('/servicios', ProductoServicioController::class);
     route::resource('/oportunidades', OportunidadDeVentaController::class);
     route::resource('/actividades', ActividadController::class);
+    route::resource('/cotizaciones', CotizacionController::class);
     
 });

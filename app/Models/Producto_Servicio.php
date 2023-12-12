@@ -17,4 +17,5 @@ class Producto_Servicio extends Model
     {
         return $this->hasOne(Categoria::class,'id','id_categoria');
     }
+    
 }

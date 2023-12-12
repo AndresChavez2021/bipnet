@@ -63,12 +63,13 @@
   --bs-body-color: #212529;
   --bs-body-bg: #fff;
 }
+
 .custom-textarea {
   height: 300px; /* Puedes ajustar el valor según tus necesidades */
 }
 #headerSidebar{
   background: rgb(63, 9, 144);
-  color: rgba(255, 255, 255, alpha);
+  color: yellow;
 }
 
 #formularios{

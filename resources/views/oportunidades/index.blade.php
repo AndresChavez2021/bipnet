@@ -31,27 +31,45 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $oportunidad->nombre }}</h5>
+                                    <hr>
                                     <p class="card-text">
                                         <strong>Fecha Inicio:</strong> {{ $oportunidad->fecha_inicio }}<br>
                                         <strong>Monto Esperado:</strong> {{ $oportunidad->monto_esperado }}<br>
                                         <strong>Fecha Estimada de Cierre:</strong> {{ $oportunidad->fecha_estimada_cierre }}<br>
                                         <strong>Cliente:</strong> {{ optional($oportunidad->cliente)->nombre }}<br>
                                         <strong>Empleado:</strong> {{ optional($oportunidad->empleado)->name }}<br>
+                                        <hr>
                                         <strong>Estado:</strong> {{ optional($oportunidad->estado)->nombre }}
+                                        <hr>
                                     </p>
                                     <div class="btn-group">
-                                        <a href="{{ route('oportunidades.show', $oportunidad->id) }}" class="btn btn-info" ><i
-                                            class="fa fa-fw fa-eye"></i>Show</a>
-                                        
-                                        <a href="{{ route('oportunidades.edit', $oportunidad->id) }}" class="btn btn-warning">Edit</a>
-                                        <!-- <form action="{{ route('oportunidades.destroy', $oportunidad->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Delete</button>
-                                        </form>  -->
-                                        <a href="{{ route('actividades.index', ['idOportunidad' => $oportunidad->id]) }}" class="btn btn-primary">Ver Actividades</a>
-                                        <a href="{{ route('actividades.create', ['idOportunidad' => $oportunidad->id]) }}" class="btn btn-secondary">crear Actividad</a>
-
+                                        <button type="button" class=" btn btn-secondary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Acciones
+                                        </button>
+                                        <div class="dropdown-menu">
+                                            <a class="dropdown-item" href="{{ route('oportunidades.show', $oportunidad->id) }}">
+                                                <i class="fa fa-fw fa-eye"></i> Informacion
+                                            </a>
+                                            <a class="dropdown-item" href="{{ route('oportunidades.edit', $oportunidad->id) }}">
+                                                <i class="fa fa-fw fa-pencil-alt"></i> Editar
+                                            </a>
+                                            <!-- Agrega más acciones según sea necesario -->
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ route('actividades.index', ['idOportunidad' => $oportunidad->id]) }}">
+                                                <i class="fa fa-fw fa-list"></i> Ver Actividades
+                                            </a>
+                                            <a class="dropdown-item" href="{{ route('actividades.create', ['idOportunidad' => $oportunidad->id]) }}">
+                                                <i class="fa fa-fw fa-plus"></i> Crear Actividad
+                                            </a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="{{ route('cotizaciones.index', ['idOportunidad' => $oportunidad->id]) }}">
+                                                <i class="fa fa-fw fa-search"></i> Ver Cotizaciones
+                                            </a>
+                                            <a class="dropdown-item" href="{{ route('cotizaciones.create', ['idOportunidad' => $oportunidad->id, 'estadoId' => $oportunidad->estado->id]) }}">
+                                                <i class="fa fa-fw fa-file-alt"></i> Crear Cotización
+                                            </a>
+                                            
+                                        </div>
                                     </div>
                                 </div>
                             </div>

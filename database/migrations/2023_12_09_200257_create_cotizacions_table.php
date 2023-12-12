@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cotizacion', function (Blueprint $table) {
+        Schema::create('cotizacions', function (Blueprint $table) {
             $table->id();
             $table->string('Codigo');
             $table->datetime('fecha');
-            $table->float('monto_total');
+            $table->float('monto_total')->nullable();
             $table->unsignedBigInteger('id_oportunidad');
             $table->unsignedBigInteger('id_estado');
             $table->foreign('id_oportunidad')->references('id')->on('oportunidad_de_ventas')->onDelete('cascade')->onUpdate('cascade');
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cotizacion');
+        Schema::dropIfExists('cotizacions');
     }
 };

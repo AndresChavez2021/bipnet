@@ -52,6 +52,9 @@
                             <li>
                                 <a href="{{ url('/actividades') }}"><b>Actividades</b></a>
                             </li>
+                            <li>
+                                <a href="{{ url('/cotizaciones') }}"><b>cotizaciones</b></a>
+                            </li>
                      </ul>
                 </li>
                 
@@ -69,7 +72,7 @@
                 </li>
                 <li class="">
                     <a href="#ServiceMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-cube"></i>
                         <b>PRODUCTOS <br> Y SERVICIOS </b>
                     </a>
                     <ul class="collapse list-unstyled" id="ServiceMenu">

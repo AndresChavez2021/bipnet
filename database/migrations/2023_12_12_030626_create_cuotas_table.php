@@ -13,14 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('pago', function (Blueprint $table) {
+        Schema::create('cuotas', function (Blueprint $table) {
             $table->id();
-            $table->string('Metodo_de_pago');
-            $table->datetime('fecha');
-            $table->float('monto_total');
-            $table->string('detalles');
-            $table->unsignedBigInteger('id_venta');
-            $table->foreign('id_venta')->references('id')->on('venta')->onDelete('cascade')->onUpdate('cascade');
+            $table->smallInteger('nro_cuota');
+            $table->datetime('fecha_vencimiento');
+            $table->float('monto_cuota');
+            $table->string('estado');
+            $table->unsignedBigInteger('id_pago');
+            $table->foreign('id_pago')->references('id')->on('pagos')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pago');
+        Schema::dropIfExists('cuotas');
     }
 };
