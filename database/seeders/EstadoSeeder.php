@@ -63,7 +63,7 @@ class EstadoSeeder extends Seeder
         Estado::create([
 
             'nombre' => 'facturado',
-            'tipo_O' => '1',
+            'tipo_O' => '0',
             'tipo_C' => '0',
             'tipo_V' => '1',
 

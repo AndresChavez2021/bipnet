@@ -41,9 +41,7 @@ class OportunidasSeeder extends Seeder
         $clientes = Cliente::all();
 
             // Genera un número aleatorio entre 0 y el tamaño de la lista
-        
-
-        // Crea un nuevo modelo OportunidadDeVenta con los datos aleatorios
+            // Crea un nuevo modelo OportunidadDeVenta con los datos aleatorios
         for ($i = 0; $i < 700; $i++) {
             $estado_aleatorio = $estados->random();
             $empleado_aleatorio = $empleados->random();
@@ -61,7 +59,7 @@ class OportunidasSeeder extends Seeder
             // Obtén el nombre del cliente y crea el nombre de la oportunidad
             $oportunidadData['nombre'] =  $cliente_aleatorio->nombre;
             // Crea un nuevo modelo OportunidadDeVenta con los datos aleatorios
-            $oportunidad = OportunidadDeVenta::create([
+            OportunidadDeVenta::create([
                 'nombre' => $oportunidadData['nombre'],
                 'id_estado' => $estado_aleatorio->id,
                 'id_empleado' => $empleado_aleatorio->id,
