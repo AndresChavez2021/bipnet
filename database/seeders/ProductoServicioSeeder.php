@@ -114,6 +114,134 @@ class ProductoServicioSeeder extends Seeder
             'precio' => 5500.00,
             'id_categoria' => $categorias->where('nombre', 'Desarrollo Web')->first()->id,
         ]);
+        $categoriaId = 11; // Asigna el ID de la categoría deseada
+
+$productos = [
+    [
+        'nombre' => 'Punto de Acceso Wi-Fi',
+        'descripcion' => 'Marca: NetLink. Estándar: 802.11ac. Frecuencia: 2.4 GHz y 5 GHz.',
+        'precio' => 80.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Router Gigabit Ethernet',
+        'descripcion' => 'Marca: SpeedNet. Puertos: 4 puertos LAN Gigabit, 1 puerto WAN Gigabit. Tecnología MU-MIMO.',
+        'precio' => 120.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Switch Ethernet Administrable',
+        'descripcion' => 'Marca: SwitchMaster. Puertos: 24 puertos Gigabit Ethernet. Administración web.',
+        'precio' => 250.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Repetidor Wi-Fi',
+        'descripcion' => 'Marca: ExtendLink. Amplifica la señal Wi-Fi. Frecuencia: 2.4 GHz.',
+        'precio' => 50.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Firewall Empresarial',
+        'descripcion' => 'Marca: SecureGuard. Protección contra amenazas cibernéticas. Administración centralizada.',
+        'precio' => 500.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Router VPN Empresarial',
+        'descripcion' => 'Marca: VPNMaster. Conexiones VPN seguras. Soporte para túneles IPsec.',
+        'precio' => 180.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Switch PoE (Power over Ethernet)',
+        'descripcion' => 'Marca: PowerLink. Puertos: 8 puertos PoE. Potencia total: 120W.',
+        'precio' => 150.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Antena Direccional de Alta Ganancia',
+        'descripcion' => 'Marca: SignalBoost. Ganancia: 18 dBi. Frecuencia: 5 GHz.',
+        'precio' => 90.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Gateway VoIP',
+        'descripcion' => 'Marca: VoIPConnect. Convierte llamadas a través de Internet. Soporte para SIP.',
+        'precio' => 100.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Adaptador Ethernet USB 3.0',
+        'descripcion' => 'Marca: SpeedLink. Velocidad: 1 Gbps. Conexión USB 3.0.',
+        'precio' => 25.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Access Point Exterior Resistente a la Intemperie',
+        'descripcion' => 'Marca: WeatherGuard. Estándar: 802.11n. Protección IP67.',
+        'precio' => 120.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Kit de Herramientas de Red',
+        'descripcion' => 'Marca: NetToolKit. Incluye alicates, probador de cables, destornilladores, etc.',
+        'precio' => 40.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Router Inalámbrico Mesh',
+        'descripcion' => 'Marca: MeshMaster. Tecnología de malla para una cobertura Wi-Fi completa.',
+        'precio' => 160.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Cable de Red Cat6',
+        'descripcion' => 'Marca: FastLink. Longitud: 15 metros. Cumple con estándares Cat6.',
+        'precio' => 15.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Panel de Conexión Patch Panel',
+        'descripcion' => 'Marca: PatchPro. 24 puertos. Para montaje en rack.',
+        'precio' => 60.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Amplificador de Señal de Red',
+        'descripcion' => 'Marca: SignalBoost. Mejora la señal Wi-Fi en áreas de baja cobertura.',
+        'precio' => 70.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Tarjeta de Red PCIe Gigabit',
+        'descripcion' => 'Marca: SpeedLink. Interfaz PCIe. Velocidad: 1 Gbps.',
+        'precio' => 30.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Switch Industrial para Montaje en Riel DIN',
+        'descripcion' => 'Marca: RailSwitch. Puertos: 8 puertos Ethernet industriales. Alimentación redundante.',
+        'precio' => 300.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Router Inalámbrico 4G LTE',
+        'descripcion' => 'Marca: LTEConnect. Conexión de banda ancha móvil. Antenas externas.',
+        'precio' => 200.00,
+        'id_categoria' => $categoriaId,
+    ],
+    [
+        'nombre' => 'Kit de Herramientas de Crimpado RJ45',
+        'descripcion' => 'Marca: CrimpPro. Incluye herramienta de crimpado, conectores RJ45 y probador de cables.',
+        'precio' => 35.00,
+        'id_categoria' => $categoriaId,
+    ],
+];
+
+foreach ($productos as $productoData) {
+    Producto_Servicio::create($productoData);
+}
 
     }
 }

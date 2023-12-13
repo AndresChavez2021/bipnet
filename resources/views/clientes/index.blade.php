@@ -16,7 +16,7 @@
 
                             @can('users.create')
                                 <div class="float-right">
-                                    <a href="{{ route('clientes.create') }}" class="btn btn-success btn-sm float-right"
+                                    <a href="{{ route('clientes.create') }}" class="btn btn-secondary btn-sm float-right"
                                         data-placement="left">
                                         {{ __('Create New') }}
                                     </a>
@@ -39,7 +39,7 @@
                                         <th>No</th>
 
                                         <th>nombre</th>
-                                        <th>Informacion</th>
+                                        <th>Contacto</th>
                                         <th>Email</th>
                                         <th>phone</th>
 

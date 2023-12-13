@@ -16,17 +16,23 @@ class EstadoSeeder extends Seeder
     public function run()
     {
         Estado::create([
-            'nombre' => 'En espera',
-            'tipo_O' => 1,
-            'tipo_C' => 0,
-            'tipo_V' => 1,
+            'nombre' => 'en proceso',
         ]);
 
         Estado::create([
-            'nombre' => 'En ejecucion',
-            'tipo_O' => 0,
-            'tipo_C' => 1,
-            'tipo_V' => 0,
+            'nombre' => 'cerrado Ganado',
+        ]);
+       
+        Estado::create([
+            'nombre' => 'facturado',
+        ]);
+
+        Estado::create([
+            'nombre' => 'cotizacion',
+        ]);
+        
+        Estado::create([
+            'nombre' => 'prospectos',
         ]);
     }
 }

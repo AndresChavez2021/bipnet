@@ -21,8 +21,9 @@ class OportunidadDeVentaController extends Controller
      */
     public function index(Request $request)
     {
-       
-        $oportunidadesQuery = OportunidadDeVenta::with(['cliente', 'empleado', 'estado']);
+        $idUser = Auth::id(); // Obtén el ID del usuario autenticado
+            //dd( $idUser);
+        $oportunidadesQuery = OportunidadDeVenta::with(['cliente', 'empleado', 'estado'])->where('id_empleado', $idUser);
 
         if ($request->has('estado') && $request->estado !== '') {
             $oportunidadesQuery->where('id_estado', $request->estado);

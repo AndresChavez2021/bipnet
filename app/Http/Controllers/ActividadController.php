@@ -50,7 +50,7 @@ class ActividadController extends Controller
         $actividad = new Actividad();
         $oportunidad = OportunidadDeVenta::where('id', $idoportunidad)->pluck('nombre', 'id');
     
-    return view('actividades.create', compact('actividad', 'oportunidad'));
+        return view('actividades.create', compact('actividad', 'oportunidad'));
     }
 
 
