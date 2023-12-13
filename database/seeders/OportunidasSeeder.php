@@ -42,7 +42,7 @@ class OportunidasSeeder extends Seeder
 
             // Genera un número aleatorio entre 0 y el tamaño de la lista
             // Crea un nuevo modelo OportunidadDeVenta con los datos aleatorios
-        for ($i = 0; $i < 700; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             $estado_aleatorio = $estados->random();
             $empleado_aleatorio = $empleados->random();
             $cliente_aleatorio = $clientes->random();

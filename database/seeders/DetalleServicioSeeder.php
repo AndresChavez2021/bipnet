@@ -18,7 +18,7 @@ class DetalleServicioSeeder extends Seeder
      */
     public function run()
     {
-        $cantidad_de_detalle = 100;// misma cantidad de cotizaciones
+        $cantidad_de_detalle = 1000;// misma cantidad de cotizaciones
 
         // Obtén una cotización aleatoria
        

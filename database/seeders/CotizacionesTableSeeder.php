@@ -33,7 +33,7 @@ class CotizacionesTableSeeder extends Seeder
             ]);
         }
         */
-        $cantidadCotizaciones = 100;// agregar la misma cantidad a detallesServicios
+        $cantidadCotizaciones = 1000;// agregar la misma cantidad a detallesServicios
 
         $estados = Estado::all()->where('tipo_C','1');
 
