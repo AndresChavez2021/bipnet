@@ -44,4 +44,9 @@ class OportunidadDeVenta extends Model
     {
     return $this->hasMany(Cotizacion::class, 'id_oportunidad', 'id');
     }
+    
+    public function venta()
+    {
+    return $this->belongsTo(Venta::class, 'id_oportunidad');
+    }
 }
