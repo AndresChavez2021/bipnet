@@ -33,9 +33,9 @@ class CotizacionesTableSeeder extends Seeder
             ]);
         }
         */
-        $cantidadCotizaciones = 10;
+        $cantidadCotizaciones = 100;// agregar la misma cantidad a detallesServicios
 
-
+        $estados = Estado::all()->where('tipo_C','1');
 
         for ($i = 1; $i <= $cantidadCotizaciones; $i++) {
    
@@ -46,7 +46,7 @@ class CotizacionesTableSeeder extends Seeder
         'fecha' => $oportunidad->fecha_inicio,
         'monto_total' => $oportunidad->monto_esperado,
         'id_oportunidad' => $oportunidad->id,
-        'id_estado' => '4',
+        'id_estado' => $estados->random()->id,
          
         ]);
         }

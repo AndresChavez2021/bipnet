@@ -35,7 +35,8 @@ class OportunidasSeeder extends Seeder
                 'updated_at' => now(),
             ]);
         }*/
-        $estados = Estado::all();
+        //$estados = Estado::all();
+        $estados = Estado::all()->where('tipo_O','1');
         $empleados = User::all();
         $clientes = Cliente::all();
 
@@ -43,7 +44,7 @@ class OportunidasSeeder extends Seeder
         
 
         // Crea un nuevo modelo OportunidadDeVenta con los datos aleatorios
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 700; $i++) {
             $estado_aleatorio = $estados->random();
             $empleado_aleatorio = $empleados->random();
             $cliente_aleatorio = $clientes->random();
