@@ -21,19 +21,16 @@ class OportunidadDeVentaController extends Controller
      */
     public function index(Request $request)
     {
-        $idUser = Auth::id(); // Obtén el ID del usuario autenticado
-            //dd( $idUser);
-        $oportunidadesQuery = OportunidadDeVenta::with(['cliente', 'empleado', 'estado'])->where('id_empleado', $idUser);
+       
+        $oportunidadesQuery = OportunidadDeVenta::with(['cliente', 'empleado', 'estado']);
 
         if ($request->has('estado') && $request->estado !== '') {
             $oportunidadesQuery->where('id_estado', $request->estado);
         }
     
         $oportunidades = $oportunidadesQuery->get();
-        //$estados = Estado::pluck('nombre', 'id');
-        $estados = Estado::where('tipo_O', '1')->pluck('nombre', 'id');
-
-        //dd($estados);
+        $estados = Estado::pluck('nombre', 'id');
+    
         return view('oportunidades.index', compact('oportunidades', 'estados'));
     }
 
@@ -45,9 +42,8 @@ class OportunidadDeVentaController extends Controller
     public function create()
     {
         $oportunidad = new OportunidadDeVenta();
-       // $estado = Estado::pluck('nombre', 'id'); //luego cambiar para que sea solo tipoO "tipo oportunidad"
-       $estado = Estado::where('tipo_O', '1')->pluck('nombre', 'id');
-       $cliente = Cliente::pluck('nombre', 'id');
+        $estado = Estado::pluck('nombre', 'id'); //luego cambiar para que sea solo tipoO "tipo oportunidad"
+        $cliente = Cliente::pluck('nombre', 'id');
         $empleado = auth()->user()->id;
         return view('oportunidades.create', compact('oportunidad','estado','cliente','empleado'));
     }
@@ -100,8 +96,7 @@ class OportunidadDeVentaController extends Controller
        
         //$oportunidades = OportunidadDeVenta::find($id);
         $oportunidad = OportunidadDeVenta::with(['cliente', 'empleado', 'estado'])->find($id);
-        //$estado = Estado::pluck('nombre', 'id');
-        $estado = Estado::where('tipo_O', '1')->pluck('nombre', 'id');
+        $estado = Estado::pluck('nombre', 'id');
         $cliente = Cliente::pluck('nombre', 'id');
         $empleado = auth()->user()->id;
         return view('oportunidades.edit', compact('oportunidad','estado','cliente','empleado'));

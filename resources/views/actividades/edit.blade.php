@@ -5,7 +5,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <h1 class="mb-4">Editar Actividad</h1>
+                <h1 class="mb-4">Editar Oportunidad de Venta</h1>
                 <form action="{{ route('actividades.update', $actividad->id) }}" method="POST">
                     @csrf
                     @method('PUT')

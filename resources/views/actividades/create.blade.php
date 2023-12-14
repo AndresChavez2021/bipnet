@@ -8,7 +8,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                       <h1>Agendar Actividad</h1>
+                        <span class="card-title">Create New</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('actividades.store') }}"  role="form" enctype="multipart/form-data">

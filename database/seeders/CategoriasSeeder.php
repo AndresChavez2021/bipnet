@@ -25,6 +25,6 @@ class CategoriasSeeder extends Seeder
         Categoria::create(['nombre' => 'Ciberseguridad']);
         Categoria::create(['nombre' => 'Desarrollo Web']);
         Categoria::create(['nombre' => 'Produtos']);
-    
+
     }
 }

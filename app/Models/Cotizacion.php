@@ -22,4 +22,9 @@ class Cotizacion extends Model
     {
         return $this->hasOne(Estado::class, 'id', 'id_estado');
     }
+
+    public function detalles()
+    {
+        return $this->hasMany(DetalleServicio::class, 'id_', 'id');
+    }
 }

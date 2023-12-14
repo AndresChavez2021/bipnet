@@ -41,17 +41,17 @@ class EstadoSeeder extends Seeder
             'tipo_C' => '0',
             'tipo_V' => '0',
         ]);
-       // Estados para la oportunidad y la venta facturada
+        // Estados para la oportunidad y la venta facturada
         Estado::create([
 
-        'nombre' => 'pendiente',
-        'tipo_O' => '0',
-        'tipo_C' => '0',
-        'tipo_V' => '1',
+            'nombre' => 'pendiente',
+            'tipo_O' => '0',
+            'tipo_C' => '0',
+            'tipo_V' => '1',
 
-         ]);
+        ]);
 
-         Estado::create([
+        Estado::create([
 
             'nombre' => 'cancelado',
             'tipo_O' => '0',
@@ -63,13 +63,13 @@ class EstadoSeeder extends Seeder
         Estado::create([
 
             'nombre' => 'facturado',
-            'tipo_O' => '0',
+            'tipo_O' => '1',
             'tipo_C' => '0',
             'tipo_V' => '1',
 
         ]);
-        
-       
+
+
 
         //Estados para las Cotizaciones
         Estado::create([
@@ -92,7 +92,7 @@ class EstadoSeeder extends Seeder
             'tipo_C' => '1',
             'tipo_V' => '0',
         ]);
-        
-      
+
+
     }
 }

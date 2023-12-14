@@ -28,8 +28,8 @@ class HomeController extends Controller
                     //VENTA DE TODOS LOS PRODUCTOS
                     $productosTodosJs = [];
                     $oportunidadesValidadas = OportunidadDeVenta::where('id_estado', 7)->get();
-                    $productosVendidos = $oportunidadesValidadas->detalles;
-                    $productosTodos = $productosVendidos::selectRaw('id_productos, SUM(cantidad*precio_venta) as total_precio_venta')
+                    //$productosVendidos = $oportunidadesValidadas->detalles;
+                    $productosTodos = DetalleServicio::selectRaw('id_productos, SUM(cantidad*precio_venta) as total_precio_venta')
                         ->groupBy('id_productos')
                         ->orderByDesc('total_precio_venta')
                         ->get();

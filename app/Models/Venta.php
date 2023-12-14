@@ -30,7 +30,7 @@ class Venta extends Model
 
     public function oportunidad()
     {
-    return $this->hasOne(OportunidadDeVenta::class, 'id_oportunidad');
+        return $this->hasOne(OportunidadDeVenta::class, 'id_oportunidad');
     }
 
     public function estado()

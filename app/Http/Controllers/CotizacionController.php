@@ -50,7 +50,7 @@ class CotizacionController extends Controller
         $oportunidad = OportunidadDeVenta::where('id', $idOportunidad)->pluck('nombre', 'id');
         $estado = Estado::where('id', $estadoId)->pluck('nombre', 'id');
         //$estado = Estado::pluck('nombre', 'id');
-        //dd($estado);
+        //dd( $oportunidad);
         return view('cotizaciones.create', compact('cotizacion', 'oportunidad', 'estado'));
     }
     

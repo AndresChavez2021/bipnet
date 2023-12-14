@@ -28,26 +28,13 @@ class EmpleadoSeeder extends Seeder
             'tipoV' => '0',
             'tipoG' => '1',
         ]);
-        User::create([
-            'name' => 'Andres',
-            'apellidos' => 'Chavez',
-            'email' => 'andres@bipnet.com',
-            'password' => '12345678',
-            'ci' => '827483',
-            'sexo' => 'M',
-            'phone' => '605222',
-            'domicilio' => 'Santa Cruz',
-            'estado' => '1',
-            'tipoV' => '0',
-            'tipoG' => '1',
-        ]);
 
         User::create([
-            'name' => 'Steven',
-            'apellidos' => 'Valverde',
-            'email' => 'steven@bipnet.com',
+            'name' => 'Michael',
+            'apellidos' => 'Humerez Estepo',
+            'email' => 'a@gmail.com',
             'password' => '123456',
-            'ci' => '98660244',
+            'ci' => '9866024',
             'sexo' => 'M',
             'phone' => '60522214',
             'domicilio' => 'Santa Cruz',
@@ -57,23 +44,23 @@ class EmpleadoSeeder extends Seeder
         ]);
         
         User::create([
-            'name' => 'mijael',
-            'apellidos' => 'perales',
-            'email' => 'mijael@bipnet.com',
+            'name' => 'Brayan',
+            'apellidos' => '',
+            'email' => 'b@gmail.com',
             'password' => '123456',
             'ci' => '9866022',
             'sexo' => 'M',
             'phone' => '60522211',
             'domicilio' => 'Santa Cruz',
             'estado' => '1',
-            'tipoV' => '1',
-            'tipoG' => '0',
+            'tipoV' => '0',
+            'tipoG' => '1',
         ]);
 
         User::create([
-            'name' => 'Mauricio',
-            'apellidos' => 'nogales',
-            'email' => 'Mauricio@bipnet.com',
+            'name' => 'Camilo',
+            'apellidos' => '',
+            'email' => 'c@gmail.com',
             'password' => '123456',
             'ci' => '9866023',
             'sexo' => 'M',
@@ -83,11 +70,10 @@ class EmpleadoSeeder extends Seeder
             'tipoV' => '1',
             'tipoG' => '0',
         ]);
-
         User::create([
-            'name' => 'Fabian',
+            'name' => 'miguel',
             'apellidos' => '',
-            'email' => 'Fabian@bipnet.com',
+            'email' => 'm@gmail.com',
             'password' => '123456',
             'ci' => '9866343',
             'sexo' => 'M',
@@ -97,6 +83,5 @@ class EmpleadoSeeder extends Seeder
             'tipoV' => '1',
             'tipoG' => '0',
         ]);
-       
     }
 }

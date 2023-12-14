@@ -20,12 +20,12 @@ class VentasSeeder extends Seeder
     public function run()
     {
         //
-       
+
         for ($i = 0; $i < 700; $i++) {
             $oportunidad = OportunidadDeVenta::whereHas('estado', function ($query) {
                 $query->where('nombre', 'cerrada Ganada');
             })->inRandomOrder()->first();
-            
+
             $estados = Estado::all()->where('tipo_V','1');
             //$oportunidad = OportunidadDeVenta::inRandomOrder()->first();
             $cliente= $oportunidad->id_cliente;
@@ -40,9 +40,9 @@ class VentasSeeder extends Seeder
                 'id_empleado'=>$empledado,
                 'id_oportunidad'=>$oportunidad->id,
                 'id_estado' => $estados->random()->id,
-        
+
             ]);
         }
-       
+
     }
 }
