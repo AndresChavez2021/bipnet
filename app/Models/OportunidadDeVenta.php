@@ -42,6 +42,7 @@ class OportunidadDeVenta extends Model
 
     public function cotizaciones()
     {
-    return $this->hasMany(Cotizacion::class, 'id_oportunidad', 'id');
+        return $this->hasMany(Cotizacion::class, 'id_oportunidad', 'id');
     }
+
 }
