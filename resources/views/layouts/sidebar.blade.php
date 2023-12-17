@@ -4,8 +4,8 @@
             <div class="sidebar-header">
 
                 <img class="img-fluid" src="{{ asset('assets/img/portfolio/logo.webp') }}" alt="Logo de BIPNET">
-               
-                
+
+
             </div>
 
             <ul class="list-unstyled components">
@@ -57,7 +57,7 @@
                             </li>
                      </ul>
                 </li>
-                
+
                 <li class="">
                     <a href="#AnalisisMenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-chart-bar"></i>
@@ -67,6 +67,9 @@
                         <!-- Agrega un nuevo ítem dentro de "Análisis de Serie Temporal" llamado "Pronóstico de Ventas" -->
                         <li>
                             <a href="{{ url('/pronostico-ventas') }}"><b>Pronóstico de Ventas</b></a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/pronostico-productos') }}"><b>Pronóstico de Productos</b></a>
                         </li>
                     </ul>
                 </li>
@@ -87,9 +90,9 @@
                         </li>
                     </ul>
                 </li>
-                
-                
-                
+
+
+
                 <li>
                     <a href="#">
                         <i class="fas fa-paper-plane"></i>

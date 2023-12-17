@@ -20,8 +20,7 @@ use App\Http\Controllers\ProductoServicioController;
 use App\Http\Controllers\OportunidadDeVentaController;
 use App\Http\Controllers\ActividadController;
 use App\Http\Controllers\CotizacionController;
-
-
+use App\Http\Controllers\PronosticoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,12 +51,12 @@ Route::get('/logout', [LogoutController::class, 'logout']);
 
 Route::group(['middleware'=>['auth']], function(){
     route::resource('/empleados', EmpleadoController::class);
-    route::resource('/clientes', ClienteController::class); 
+    route::resource('/clientes', ClienteController::class);
     route::resource('/users', UserController::class);
     route::resource('/perfil', PerfilController::class);
     route::resource('/password', PasswordController::class);
     route::resource('/turnos', TurnoController::class);
-    route::resource('/detalleTurnos', DetalleTurnoController::class);
+    route::resource('/detalleTurnos',DetalleTurnoController::class);
     route::resource('/roles', RolController::class);
     route::resource('/estados', EstadoController::class);
     route::resource('/categorias', CategoriaController::class);
@@ -65,5 +64,9 @@ Route::group(['middleware'=>['auth']], function(){
     route::resource('/oportunidades', OportunidadDeVentaController::class);
     route::resource('/actividades', ActividadController::class);
     route::resource('/cotizaciones', CotizacionController::class);
-    
+    /* PRONOSTICO */
+    route::get('/pronostico-ventas', [PronosticoController::class,"indexPronosticoVenta"]);
+    route::get('/pronostico-ventas/create', [PronosticoController::class,"createPronosticoVenta"])->name("pronostico-ventas.create");
+    route::post('/pronostico-ventas/store', [PronosticoController::class,"storePronosticoVenta"])->name("pronostico-ventas.store");
+
 });
