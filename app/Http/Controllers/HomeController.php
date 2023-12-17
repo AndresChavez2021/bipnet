@@ -96,42 +96,20 @@ class HomeController extends Controller
                     }
 
                     //VENTAS POR MES DE LOS 5 ANTERIORES PRODUCTOS
-/*
+
                     $matrizVentas = [];
-                    $ventasCinco = OportunidadDeVenta::select(
-                        'producto__servicios.id',
-                        'producto__servicios.nombre as nombre',
-                        DB::raw('SUM(detalle_servicios.cantidad * detalle_servicios.precio_venta) as total_precio_venta'),
-                        'oportunidad_de_ventas.fecha_inicio'
-                    )
-                        ->join('cotizacions', 'oportunidad_de_ventas.id', '=', 'cotizacions.id_oportunidad')
-                        ->join('detalle_servicios', 'cotizacions.id', '=', 'detalle_servicios.id_cotizacion')
-                        ->join('producto__servicios', 'detalle_servicios.id_productos', '=', 'producto__servicios.id')
-                        ->where('oportunidad_de_ventas.id_estado', 7)
-                        ->where('oportunidad_de_ventas.fecha_inicio', '>', '2000-01-01')
-                        ->where('oportunidad_de_ventas.fecha_inicio', '<', DB::raw('CURDATE()'))
-                        ->groupBy('producto__servicios.id', 'producto__servicios.nombre', 'oportunidad_de_ventas.fecha_inicio')
-                        ->orderByDesc('total_precio_venta')
-                        ->limit(5)
-                        ->get();
-                    $dataVentasMes = [];
-                    foreach ($ventas as $producto) {
-                        $ventasPorMes = DetalleServicio::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, SUM(cantidad*precio_venta) as total_ventas')
-                            ->where('id_productos', $producto['id_productos'])
-                            ->groupBy('year', 'month')
-                            ->get();
-                        $line =[];
-                        foreach ($ventasPorMes as $venta) {
-                            $line[] = floatval($venta['total_ventas']);
-                        }
-                        //$matrizVentas[] = $line;
-                        $nombre = Producto_Servicio::find($producto['id_productos'])->nombre;
-                        $dataVentasMes[] = [
-                            'name' => $nombre,
-                            'data' => $line
+
+                    foreach ($ventasCinco as $venta) {
+                        $nombreProducto = $venta->nombre;
+                        $ventaProducto = self::obtenerVentasPorMesYAnho($venta->id);
+                        $matrizVentas[] = [
+                            'name' => $nombreProducto,
+                            'data' => $ventaProducto
                         ];
+
                     }
-*/
+
+
 
                     //NUMERO DE OPORTUNIDADES POR ESTADO
                     $oportunidadEstado = [];
@@ -164,15 +142,38 @@ class HomeController extends Controller
                     }
 
 
-                    //NUMERO DE ACTIVIDADES PROMEDIO POR OPORTUNIDAD DE VENTA
-                    //'productosValidados'=>json_encode($productosValidados),
-
-                    return view('home.index',[ 'cotizaciones'=>json_encode($ventasCinco), 'oportunidadVentas'=>json_encode($oportunidadesValidadas), 'productos' => json_encode($ventasTodos), 'nombreProductosTodos' => json_encode(''), 'data' => json_encode($pointsCinco), 'lines' => json_encode(''), 'oportunidadEstado' => json_encode($oportunidadEstado), 'ventaEstado' => json_encode($ventaEstado)]);
+                    return view('home.index',[ 'cotizaciones'=>json_encode($matrizVentas), 'oportunidadVentas'=>json_encode($oportunidadesValidadas), 'productos' => json_encode($ventasTodos), 'nombreProductosTodos' => json_encode(''), 'data' => json_encode($pointsCinco), 'lines' => json_encode($matrizVentas), 'oportunidadEstado' => json_encode($oportunidadEstado), 'oportunidadReporte' => $oportunidadEstado, 'ventaEstado' => json_encode($ventaEstado)]);
                 }
             }
         }
 
 
         return view('inicio');
+    }
+
+    public static function obtenerVentasPorMesYAnho($idProducto)
+    {
+        $ventasPorMes = [];
+
+        for ($mes = 1; $mes <= 12; $mes++) {
+            $ventas = Producto_Servicio::select(
+                'producto__servicios.id',
+                'producto__servicios.nombre',
+                DB::raw('SUM(detalle_servicios.cantidad * detalle_servicios.precio_venta) as venta'),
+                'oportunidad_de_ventas.fecha_inicio as fecha'
+            )
+                ->join('detalle_servicios', 'producto__servicios.id', '=', 'detalle_servicios.id_productos')
+                ->join('cotizacions', 'detalle_servicios.id_cotizacion', '=', 'cotizacions.id')
+                ->join('oportunidad_de_ventas', 'cotizacions.id_oportunidad', '=', 'oportunidad_de_ventas.id')
+                ->where('producto__servicios.id', $idProducto)
+                ->whereYear('oportunidad_de_ventas.fecha_inicio', 2023)
+                ->whereMonth('oportunidad_de_ventas.fecha_inicio', $mes)
+                ->groupBy('producto__servicios.id', 'producto__servicios.nombre', DB::raw('YEAR(oportunidad_de_ventas.fecha_inicio)'), DB::raw('MONTH(oportunidad_de_ventas.fecha_inicio)'), 'oportunidad_de_ventas.fecha_inicio')
+                ->get();
+
+            $ventasPorMes[] = $ventas->isEmpty() ? floatval(0) : $ventas->first()->venta;
+        }
+
+        return $ventasPorMes;
     }
 }

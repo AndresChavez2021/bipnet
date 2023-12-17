@@ -4,12 +4,95 @@
     @auth
         <p>Bienvenido {{ auth()->user()->name ?? auth()->user()->email }}, estás autenticado a la página.</p>
     @endauth
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href={{ asset('assets/css/paper-dashboard.css') }} rel="stylesheet" />
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-core.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-pareto.min.js"></script>
     <body>
-    {{$cotizaciones}} <br>
+     <br>
     <div class="container">
+        <div class="row">
+            <h4>Reporte en la Gestión</h4>
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <label for="fecha1">El reporte presentado es a partir de la fecha: </label>
+                        <input type="date" id="fecha1" name="fecha1">
+                    </div>
+                    <div class="col">
+                        <label for="fecha2">hasta la fecha: </label>
+                        <input type="date" id="fecha2" name="fecha2">
+                    </div>
+                </div>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+        &nbsp
+        <hr>
+        <div class="row">
+            <h3>Oportunidades</h3>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-5 col-md-4">
+                                <div class="icon-big text-center icon-warning">
+                                    <i class="nc-icon nc-globe text-warning"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-md-8">
+                                <div class="numbers">
+                                    <p class="card-category" style="font-weight: bold">Prospectos</p>
+                                        <p class="card-title" id="prospectos"><p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-5 col-md-4">
+                                <div class="icon-big text-center icon-warning">
+                                    <i class="nc-icon nc-money-coins text-success"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-md-8">
+                                <div class="numbers">
+                                    <p class="card-category"  style="font-weight: bold">En Proceso</p>
+                                    <p class="card-title" id="enProceso"><p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-5 col-md-4">
+                                <div class="icon-big text-center icon-warning">
+                                    <i class="nc-icon nc-vector text-danger"></i>
+                                </div>
+                            </div>
+                            <div class="col-7 col-md-8">
+                                <div class="numbers">
+                                    <p class="card-category"  style="font-weight: bold">Facturados</p>
+                                    <p class="card-title" id="facturados"><p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            &nbsp
+            <hr>
+        </div>
         <div class="row">
             <h3>Productos más vendidos</h3>
             <div class="col-6" id="pie-container"></div>
@@ -38,7 +121,6 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script>
-
         //PIE CHART
         Highcharts.chart('pie-container', {
             chart: {
