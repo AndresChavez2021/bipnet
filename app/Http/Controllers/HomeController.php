@@ -10,11 +10,39 @@ use App\Models\Venta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use function PHPUnit\Framework\isEmpty;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+
+        if($request->has('fechaInicio') && $request->has('fechaFin')) {
+            $fechaInicio = $request->fechaInicio;
+            $fechaFin = $request->fechaFin;
+        } else {
+            $fechaInicio = '01-01-2023';
+            $fechaFin = DB::raw('CURDATE()');
+        }
+        /*
+         * public function index(Request $request)
+    {
+        $idUser = Auth::id(); // Obtén el ID del usuario autenticado
+            //dd( $idUser);
+        $oportunidadesQuery = OportunidadDeVenta::with(['cliente', 'empleado', 'estado'])->where('id_empleado', $idUser);
+
+        if ($request->has('estado') && $request->estado !== '') {
+            $oportunidadesQuery->where('id_estado', $request->estado);
+        }
+
+        $oportunidades = $oportunidadesQuery->get();
+        //$estados = Estado::pluck('nombre', 'id');
+        $estados = Estado::where('tipo_O', '1')->pluck('nombre', 'id');
+
+        //dd($estados);
+        return view('oportunidades.index', compact('oportunidades', 'estados'));
+    }
+         */
         if (auth()->user()) {
             $TipoV = auth()->user()->tipoV;
             $TipoG = auth()->user()->tipoG;
@@ -27,19 +55,6 @@ class HomeController extends Controller
                 if ($TipoG == 1) {
 
                     //VENTA DE TODOS LOS PRODUCTOS
-                    $productosTodosJs = [];
-                    $oportunidades = OportunidadDeVenta::with('cotizaciones');
-                    $oportunidadesValidadas = OportunidadDeVenta::where('id_estado', 7)->get();
-
-                    $cotizaciones = $oportunidadesValidadas->load('cotizaciones');
-
-                    $productosValidados = [];
-                    foreach ($cotizaciones as $cotizacion) {
-                        $detalles = $cotizacion->cotizaciones->load('detalles');
-                        foreach ($detalles as $detalle) {
-                            $productosValidados[] = $detalle->detalles;;
-                        }
-                    }
 
                     $ventas = OportunidadDeVenta::select(
                         'producto__servicios.id',
@@ -56,14 +71,8 @@ class HomeController extends Controller
                         ->orderByDesc('total_precio_venta')
                         ->get();
 
-                    $productosTodos = DetalleServicio::selectRaw('id_productos, SUM(cantidad*precio_venta) as total_precio_venta')
-                        ->groupBy('id_productos')
-                        ->orderByDesc('total_precio_venta')
-                        ->get();
-
                     $ventasTodos = [];
                     foreach ($ventas as $venta) {
-                        //$nombre = Producto_Servicio::find($producto['id_productos'])->nombre;
                         $ventasTodos[] = [
                             'x' => $venta->nombre,
                             'value' => floatval($venta->total_precio_venta)
@@ -80,8 +89,8 @@ class HomeController extends Controller
                         ->join('detalle_servicios', 'cotizacions.id', '=', 'detalle_servicios.id_cotizacion')
                         ->join('producto__servicios', 'detalle_servicios.id_productos', '=', 'producto__servicios.id')
                         ->where('oportunidad_de_ventas.id_estado', 7)
-                        ->where('oportunidad_de_ventas.fecha_inicio', '>', '2023-01-01')
-                        ->where('oportunidad_de_ventas.fecha_inicio', '<', DB::raw('CURDATE()'))
+                        ->where('oportunidad_de_ventas.fecha_inicio', '>', $fechaInicio)
+                        ->where('oportunidad_de_ventas.fecha_inicio', '<', $fechaFin)
                         ->groupBy('producto__servicios.id', 'producto__servicios.nombre')
                         ->orderByDesc('total_precio_venta')
                         ->limit(5)
@@ -115,7 +124,22 @@ class HomeController extends Controller
                     $oportunidadEstado = [];
                     $oportunidades = OportunidadDeVenta::select('id_estado', \DB::raw('COUNT(*) as cantidad'))
                         ->groupBy('id_estado')
+                        ->where('oportunidad_de_ventas.fecha_inicio', '>', $fechaInicio)
+                        ->where('oportunidad_de_ventas.fecha_inicio', '<', $fechaFin)
                         ->get();
+
+                    $prospectos = OportunidadDeVenta::where('id_estado', '2')
+                        ->where('oportunidad_de_ventas.fecha_inicio', '>', $fechaInicio)
+                        ->where('oportunidad_de_ventas.fecha_inicio', '<', $fechaFin)
+                        ->count();
+                    $enProceso = OportunidadDeVenta::where('id_estado', '1')
+                        ->where('oportunidad_de_ventas.fecha_inicio', '>', $fechaInicio)
+                        ->where('oportunidad_de_ventas.fecha_inicio', '<', $fechaFin)
+                        ->count();
+                    $completados = OportunidadDeVenta::where('id_estado', '3')
+                        ->where('oportunidad_de_ventas.fecha_inicio', '>', $fechaInicio)
+                        ->where('oportunidad_de_ventas.fecha_inicio', '<', $fechaFin)
+                        ->count();
 
 
                     foreach ($oportunidades as $oportunidad) {
@@ -128,10 +152,12 @@ class HomeController extends Controller
 
                     //NUMERO DE VENTAS POR ESTADO
                     $ventaEstado = [];
-                    $ventas = Venta::select('id_estado', \DB::raw('COUNT(*) as cantidad'))
-                        ->groupBy('id_estado')
+                    $ventas = Venta::select('ventas.id_estado', \DB::raw('COUNT(*) as cantidad'))
+                        ->join('oportunidad_de_ventas', 'ventas.id_oportunidad', '=', 'oportunidad_de_ventas.fecha_inicio')
+                        ->groupBy('ventas.id_estado')
+                        ->where('oportunidad_de_ventas.fecha_inicio', '>', $fechaInicio)
+                        ->where('oportunidad_de_ventas.fecha_inicio', '<', $fechaFin)
                         ->get();
-
 
                     foreach ($ventas as $venta) {
                         $nombre = Estado::find($oportunidad['id_estado'])->nombre;
@@ -142,7 +168,7 @@ class HomeController extends Controller
                     }
 
 
-                    return view('home.index',[ 'cotizaciones'=>json_encode($matrizVentas), 'oportunidadVentas'=>json_encode($oportunidadesValidadas), 'productos' => json_encode($ventasTodos), 'nombreProductosTodos' => json_encode(''), 'data' => json_encode($pointsCinco), 'lines' => json_encode($matrizVentas), 'oportunidadEstado' => json_encode($oportunidadEstado), 'oportunidadReporte' => $oportunidadEstado, 'ventaEstado' => json_encode($ventaEstado)]);
+                    return view('home.index',[ 'prospectos'=>$prospectos, 'enProceso'=>$enProceso, 'cerrados'=>$completados, 'productos' => json_encode($ventasTodos), 'data' => json_encode($pointsCinco), 'lines' => json_encode($matrizVentas), 'oportunidadEstado' => json_encode($oportunidadEstado), 'ventaEstado' => json_encode($ventaEstado)]);
                 }
             }
         }

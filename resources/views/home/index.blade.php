@@ -11,6 +11,7 @@
     <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-core.min.js"></script>
     <script src="https://cdn.anychart.com/releases/8.11.1/js/anychart-pareto.min.js"></script>
     <body>
+
      <br>
     <div class="container">
         <div class="row">
@@ -19,11 +20,11 @@
                 <div class="row">
                     <div class="col">
                         <label for="fecha1">El reporte presentado es a partir de la fecha: </label>
-                        <input type="date" id="fecha1" name="fecha1">
+                        <input type="date" id="fechaInicio" name="fechaInicio">
                     </div>
                     <div class="col">
                         <label for="fecha2">hasta la fecha: </label>
-                        <input type="date" id="fecha2" name="fecha2">
+                        <input type="date" id="fechaFin" name="fechaFin">
                     </div>
                 </div>
                 <button type="submit">Enviar</button>
@@ -45,7 +46,7 @@
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
                                     <p class="card-category" style="font-weight: bold">Prospectos</p>
-                                        <p class="card-title" id="prospectos"><p>
+                                        <p class="card-title" id="prospectos">{{ $prospectos }}<p>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +65,7 @@
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
                                     <p class="card-category"  style="font-weight: bold">En Proceso</p>
-                                    <p class="card-title" id="enProceso"><p>
+                                    <p class="card-title" id="enProceso">{{ $enProceso }}<p>
                                 </div>
                             </div>
                         </div>
@@ -83,7 +84,7 @@
                             <div class="col-7 col-md-8">
                                 <div class="numbers">
                                     <p class="card-category"  style="font-weight: bold">Facturados</p>
-                                    <p class="card-title" id="facturados"><p>
+                                    <p class="card-title" id="facturados">{{ $cerrados }}<p>
                                 </div>
                             </div>
                         </div>
@@ -115,6 +116,9 @@
             <h3>Ventas</h3>
             <div class="col-6" id="venta-pie-container"></div>
             <div class="col-6" id="venta-column-container"></div>
+        </div>
+        <div class="row">
+            <div id="trend-container"></div>
         </div>
     </div>
 
@@ -518,6 +522,92 @@
                     data: <?=$ventaEstado?>
                 }
             ],
+        });
+
+        // TENDENCIA
+
+        const dataset = [
+            [1.4, 0.4],
+            [2.4, 5.3],
+            [2.9, 4.9],
+            [5, 2.3],
+            [3.6, 1.9],
+            [5.1, 6.1],
+            [2, 4],
+            [2, 5.6],
+            [-0.2, 6.3],
+            [1.2, 6.3]
+        ];
+
+        function getTrendLine(data) {
+            const n = data.length;
+
+            let sumX = 0,
+                sumY = 0,
+                sumXY = 0,
+                sumX2 = 0;
+
+            // Calculate the sums needed for linear regression
+            for (let i = 0; i < n; i++) {
+                const [x, y] = data[i];
+                sumX += x;
+                sumY += y;
+                sumXY += x * y;
+                sumX2 += x ** 2;
+            }
+
+            // Calculate the slope of the trend line
+            const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX ** 2);
+
+            // Calculate the intercept of the trend line
+            const intercept = (sumY - slope * sumX) / n;
+
+            const trendline = []; // Array to store the trend line data points
+
+            // Find the minimum and maximum x-values from the scatter plot data
+            const minX = Math.min(...data.map(([x]) => x));
+            const maxX = Math.max(...data.map(([x]) => x));
+
+            // Calculate the corresponding y-values for the trend line using the slope
+            // and intercept
+            trendline.push([minX, minX * slope + intercept]);
+            trendline.push([maxX, maxX * slope + intercept]);
+
+            return trendline;
+        }
+
+        Highcharts.chart('trend-container', {
+            title: {
+                text: 'Scatter plot with trend line'
+            },
+            xAxis: {
+                min: -0.5,
+                max: 5.5
+            },
+            yAxis: {
+                min: 0
+            },
+            series: [{
+                type: 'line',
+                name: 'Trend Line',
+                data: getTrendLine(dataset),
+                marker: {
+                    enabled: false
+                },
+                states: {
+                    hover: {
+                        lineWidth: 0
+                    }
+                },
+                enableMouseTracking: false
+            }, {
+                type: 'scatter',
+                name: 'Observations',
+                data: dataset,
+                marker: {
+                    radius: 4
+                }
+            }]
         });
 
 
