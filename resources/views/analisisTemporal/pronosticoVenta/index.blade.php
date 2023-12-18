@@ -55,10 +55,11 @@
 
         // Imprimir datos en la consola para verificar
 
+
         const averages = JSON.parse(data.average);
         const range = JSON.parse(data.range);
         // const avgs=parseFloat(averages)
-        console.log("average ", averages)
+        // console.log("average ", averages)
 
         Highcharts.chart('container', {
 

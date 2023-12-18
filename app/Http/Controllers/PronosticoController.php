@@ -52,7 +52,6 @@ class PronosticoController extends Controller
             ]);
         }
 
-        // Obtener fechas, ranges y averages de los pronósticos
 
 
     }
