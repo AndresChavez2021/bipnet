@@ -51,12 +51,12 @@
    
     <script>
    const data = <?= json_encode($data) ?>;
-
+  
     // Imprimir datos en la consola para verificar
    
-    const average    = JSON.parse(data.average);
+    const average = JSON.parse(data.average);
     const range = JSON.parse(data.range);
-   
+    console.log(average);
 
     Highcharts.chart('container', {
 

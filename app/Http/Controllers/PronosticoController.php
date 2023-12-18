@@ -11,14 +11,16 @@ class PronosticoController extends Controller
     public function indexPronosticoVenta (){
 
         $pronosticos = PronosticoVenta::all();
-
-        // Obtener fechas, ranges y averages de los pronósticos
         $fechas = $pronosticos->pluck('fecha');
         $range = $pronosticos->map(function ($pronostico) {
             return [$pronostico->p10, $pronostico->p90];
         });
-        $average = $pronosticos->pluck('p50');
-        //dd($ranges);
+        $average = $pronosticos->map(function ($pronostico) {
+            return [$pronostico->p50];
+        });
+
+        //$average = $pronosticos->pluck('p50');
+      //dd($average);
       
         return view("analisisTemporal.pronosticoVenta.index", [
             'data' => [
@@ -27,6 +29,10 @@ class PronosticoController extends Controller
             ]
         ]);
     }
+
+
+
+
 
     public function createPronosticoVenta(){
        return view("analisisTemporal.pronosticoVenta.create");
