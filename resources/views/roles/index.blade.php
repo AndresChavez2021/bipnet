@@ -40,7 +40,7 @@
                 </div>
                 <div class="col-1">
                     @can('crear-rol')
-                        <a href="{{ route('roles.create') }}" class="btn btn-primary ml-auto">
+                        <a href="{{ route('roles.create') }}" class="btn btn-secondary ml-auto">
                             <i class="fas fa-plus"></i>
                             Agregar</a>
                     @endcan
@@ -80,7 +80,7 @@
                                             <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-primary"><i
                                                     class="fas fa-pencil-alt"></i></a>
                                         @endcan
-                                        @can('borrar-rol')
+                                       {{--   @can('borrar-rol')
                                             <button type="submit" class="btn btn-danger" form="delete_{{ $role->id }}"
                                                 onclick="return confirm('¿Estás seguro de eliminar el registro?')">
                                                 <i class="fas fa-trash"></i>
@@ -91,7 +91,7 @@
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
-                                        @endcan
+                                        @endcan--}}
                                     </div>
                                 </td>
                             </tr>

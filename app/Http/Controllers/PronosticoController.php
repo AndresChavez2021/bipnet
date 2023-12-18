@@ -42,13 +42,17 @@ class PronosticoController extends Controller
             $average2 = $pronosticos->map(function ($pronostico) {
                 return [floatval($pronostico->p50)];
             });
+
             // dd($average2);
             //  var_dump($request->all());
             return view("analisisTemporal.pronosticoVenta.index", [
                 'data' => [
                     'range' => json_encode($range),
                     'average' => json_encode($average2),
-                ]
+
+                ],
+                'fecha'=>'null'
+
             ]);
         }
 

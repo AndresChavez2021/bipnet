@@ -57,7 +57,7 @@
 
                                             <td>{{ $cotizacion->Codigo }}</td>
                                             <td>{{ $cotizacion->fecha }}</td>
-                                            <td>{{ $cotizacion->monto_total }}</td>
+                                            <td>{{ $cotizacion->monto_total }} Bs</td>
                                          
                                             <td>{{ $cotizacion->oportunidadDeVenta->nombre }}</td>
                                             <td>{{ $cotizacion->estado->nombre }}</td>
@@ -72,8 +72,8 @@
                                                             class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i
-                                                            class="fa fa-fw fa-trash"></i> Delete</button>
+                                                    {{--  <button type="submit" class="btn btn-danger btn-sm"><i
+                                                            class="fa fa-fw fa-trash"></i> Delete</button>--}}
                                                 </form>
                                             </td>
                                         </tr>

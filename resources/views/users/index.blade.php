@@ -88,7 +88,7 @@
                                             <a href="{{ route('users.edit', $user->id) }}" class="btn btn-primary"><i
                                                     class="fas fa-pencil-alt"></i></a>
                                         @endcan
-                                        @can('borrar-usuario')
+                                       {{--   @can('borrar-usuario')
                                             <button type="submit" class="btn btn-danger" form="delete_{{ $user->id }}"
                                                 onclick="return confirm('¿Estás seguro de eliminar el registro?')">
                                                 <i class="fas fa-trash"></i>
@@ -99,7 +99,8 @@
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
-                                        @endcan
+                                           
+                                        @endcan --}}
                                     </div>
                                 </td>
                             </tr>

@@ -2,10 +2,10 @@
 @section('content')
     <div class="card mt-4">
         <div class="card-header d-inline-flex">
-            <h1>Formulario - Editar Usuarios</h1>
+            <h1> Editar Usuario</h1>
         </div>
         <div class="card-header d-inline-flex">
-            <a href="{{ route('users.index') }}" class="btn btn-primary ml-auto">
+            <a href="{{ route('users.index') }}" class="btn btn-secondary ml-auto">
                 <i class="fas fa-arrow-left"></i>
                 Volver</a>
         </div>
@@ -16,7 +16,7 @@
             </form>
         </div>
         <div class="card-footer">
-            <Button class="btn btn-primary" form="update">
+            <Button class="btn btn-secondary" form="update">
                 <i class="fas fa-pencil-alt"></i> Editar
             </Button>
         </div>

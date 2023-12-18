@@ -5,7 +5,7 @@
             <h1>Formulario - Ver Usuarios</h1>
         </div>
         <div class="card-header d-inline-flex">
-            <a href="{{ route('users.index') }}" class="btn btn-primary ml-auto">
+            <a href="{{ route('users.index') }}" class="btn btn-secondary ml-auto">
                 <i class="fas fa-arrow-left"></i>
                 Volver</a>
         </div>

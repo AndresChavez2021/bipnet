@@ -64,21 +64,21 @@
         Highcharts.chart('container', {
 
             title: {
-                text: 'July temperatures in Nesbyen, 2022',
+                text: 'Ventas en 2024',
                 align: 'left'
             },
 
             subtitle: {
                 text: 'Source: ' +
-                    '<a href="https://www.yr.no/nb/historikk/graf/1-113585/Norge/Viken/Nesbyen/Nesbyen?q=2022-07"' +
-                    'target="_blank">YR</a>',
+                    '<a href="https://www.bipnet.com.bo"' +
+                    'target="_blank">BIPNET</a>',
                 align: 'left'
             },
 
             xAxis: {
                 type: 'datetime',
                 accessibility: {
-                    rangeDescription: 'Range: Jul 1st 2022 to Jul 31st 2022.'
+                    rangeDescription: ''
                 }
             },
 
@@ -91,27 +91,27 @@
             tooltip: {
                 crosshairs: true,
                 shared: true,
-                valueSuffix: '°C'
+                valueSuffix: '%'
             },
 
             plotOptions: {
                 series: {
-                    pointStart: Date.UTC(2024, 0, 1),
+                    pointStart: Date.UTC(2024, <?=$fecha?>, 1),
                     pointIntervalUnit: 'month',
                 }
             },
 
             series: [{
-                name: 'Temperature',
+                name: 'p50',
                 data: averages,
                 zIndex: 1,
                 marker: {
                     fillColor: 'white',
                     lineWidth: 2,
-                    lineColor: Highcharts.getOptions().colors[0]
+                    lineColor: Highcharts.getOptions().colors[1]
                 }
             }, {
-                name: 'Range',
+                name: 'p10,p90',
                 data: range,
                 type: 'arearange',
                 lineWidth: 0,

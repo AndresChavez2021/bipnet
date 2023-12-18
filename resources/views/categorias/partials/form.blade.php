@@ -9,6 +9,6 @@
         <hr>
     </div>
     <div class="box-footer mt20">
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-secondary">Submit</button>
     </div>
 </div>

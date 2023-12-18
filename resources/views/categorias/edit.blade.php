@@ -9,7 +9,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">Update</span>
+                        <h1>Editar Categoria</h1>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('categorias.update', $categoria->id) }}" role="form"

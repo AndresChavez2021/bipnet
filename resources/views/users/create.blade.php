@@ -15,7 +15,7 @@
             </form>
         </div>
         <div class="card-footer">
-            <Button class="btn btn-primary" form="create">
+            <Button class="btn btn-secondary" form="create">
                 <i class="fas fa-plus"></i> Crear
             </Button>
         </div>

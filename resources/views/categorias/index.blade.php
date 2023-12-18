@@ -13,7 +13,7 @@
                             </span>
 
                             <div class="float-right">
-                                <a href="{{ route('categorias.create') }}" class="btn btn-success btn-sm float-right"
+                                <a href="{{ route('categorias.create') }}" class="btn btn-secondary btn-sm float-right"
                                     data-placement="left">
                                     {{ __('Create New') }}
                                 </a>
