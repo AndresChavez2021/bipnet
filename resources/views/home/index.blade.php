@@ -25,6 +25,8 @@
     <script>
 
         //PIE CHART
+
+        //console.log(data);
         Highcharts.chart('pie-container', {
             chart: {
                 type: 'pie'

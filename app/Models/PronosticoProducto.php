@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class PronosticoProducto extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'id',
+        'fecha',
+        'p10',
+        'p50',
+        'p90',
+        'ref',
+    ];
 }

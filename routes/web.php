@@ -55,8 +55,7 @@ Route::group(['middleware'=>['auth']], function(){
     route::resource('/users', UserController::class);
     route::resource('/perfil', PerfilController::class);
     route::resource('/password', PasswordController::class);
-    route::resource('/turnos', TurnoController::class);
-    route::resource('/detalleTurnos',DetalleTurnoController::class);
+  
     route::resource('/roles', RolController::class);
     route::resource('/estados', EstadoController::class);
     route::resource('/categorias', CategoriaController::class);

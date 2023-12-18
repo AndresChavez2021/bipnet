@@ -10,9 +10,11 @@ class PronosticoVenta extends Model
     use HasFactory;
     protected $fillable = [
         'id',
-        'nombre',
         'fecha',
-
+        'p10',
+        'p50',
+        'p90',
+        'ref',
     ];
 
 }

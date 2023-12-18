@@ -5,8 +5,8 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h1 class="mb-4">Pronóstico de Venta</h1>
-                    <a href="{{ route('pronostico-ventas.create') }}" class="btn btn-secondary">Crear Oportunidad</a>
+                        <h1 class="mb-4">Pronóstico de Ventas </h1>
+                   <!-- <a href="{{ route('pronostico-ventas.create') }}" class="btn btn-secondary">Crear Oportunidad</a>-->
                 </div>
 
                 <hr>
@@ -14,69 +14,114 @@
                 <form method="GET" action="{{ route('oportunidades.index') }}" class="mb-4">
                     @csrf
                     <div class="form-group">
-                        <label for="estado">Filtrar por Estado:</label>
-                        <select name="estado">
-                          {{--   <option value="" selected disabled>Seleccionar Estado</option>
-                            @foreach ($estados as $id => $nombre)
-                                <option value="{{ $id }}">{{ $nombre }}</option>
-                            @endforeach --}}
+                        <label for="mes">Filtrar por Mes:</label>
+                        <select name="mes">
+                            <option value="01">Enero</option>
+                            <option value="02">Febrero</option>
+                            <option value="03">Marzo</option>
+                            <option value="04">Abril</option>
+                            <option value="05">Mayo</option>
+                            <option value="06">Junio</option>
+                            <option value="07">Julio</option>
+                            <option value="08">Agosto</option>
+                            <option value="09">Septiembre</option>
+                            <option value="10">Octubre</option>
+                            <option value="11">Noviembre</option>
+                            <option value="12">Diciembre</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-secondary">Filtrar</button>
                 </form>
                 <hr>
-              {{--   <div class="row">
-                    @foreach ($oportunidades as $oportunidad)
-                        <div class="col-lg-4 col-md-6 mb-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $oportunidad->nombre }}</h5>
-                                    <hr>
-                                    <p class="card-text">
-                                        <strong>Fecha Inicio:</strong> {{ $oportunidad->fecha_inicio }}<br>
-                                        <strong>Monto Esperado:</strong> {{ $oportunidad->monto_esperado }}<br>
-                                        <strong>Fecha Estimada de Cierre:</strong> {{ $oportunidad->fecha_estimada_cierre }}<br>
-                                        <strong>Cliente:</strong> {{ optional($oportunidad->cliente)->nombre }}<br>
-                                        <strong>Empleado:</strong> {{ optional($oportunidad->empleado)->name }}<br>
-                                        <hr>
-                                        <strong>Estado:</strong> {{ optional($oportunidad->estado)->nombre }}
-                                        <hr>
-                                    </p>
-                                    <div class="btn-group">
-                                        <button type="button" class=" btn btn-secondary dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Acciones
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="{{ route('oportunidades.show', $oportunidad->id) }}">
-                                                <i class="fa fa-fw fa-eye"></i> Informacion
-                                            </a>
-                                            <a class="dropdown-item" href="{{ route('oportunidades.edit', $oportunidad->id) }}">
-                                                <i class="fa fa-fw fa-pencil-alt"></i> Editar
-                                            </a>
-                                            <!-- Agrega más acciones según sea necesario -->
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="{{ route('actividades.index', ['idOportunidad' => $oportunidad->id]) }}">
-                                                <i class="fa fa-fw fa-list"></i> Ver Actividades
-                                            </a>
-                                            <a class="dropdown-item" href="{{ route('actividades.create', ['idOportunidad' => $oportunidad->id]) }}">
-                                                <i class="fa fa-fw fa-plus"></i> Crear Actividad
-                                            </a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="{{ route('cotizaciones.index', ['idOportunidad' => $oportunidad->id]) }}">
-                                                <i class="fa fa-fw fa-search"></i> Ver Cotizaciones
-                                            </a>
-                                            <a class="dropdown-item" href="{{ route('cotizaciones.create', ['idOportunidad' => $oportunidad->id, 'estadoId' => $oportunidad->estado->id]) }}">
-                                                <i class="fa fa-fw fa-file-alt"></i> Crear Cotización
-                                            </a>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div> --}}
+                <figure class="highcharts-figure">
+                    <div id="container"></div>
+                    <p class="highcharts-description">
+                        Pronostico de Las ventas en Bipnet.SRL.
+                    </p>
+                </figure>
             </div>
         </div>
     </div>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    
+   
+    <script>
+   const data = <?= json_encode($data) ?>;
+
+    // Imprimir datos en la consola para verificar
+   
+    const average    = JSON.parse(data.average);
+    const range = JSON.parse(data.range);
+   
+
+    Highcharts.chart('container', {
+
+title: {
+    text: 'July temperatures in Nesbyen, 2022',
+    align: 'left'
+},
+
+subtitle: {
+    text: 'Source: ' +
+        '<a href="https://www.yr.no/nb/historikk/graf/1-113585/Norge/Viken/Nesbyen/Nesbyen?q=2022-07"' +
+        'target="_blank">YR</a>',
+    align: 'left'
+},
+
+xAxis: {
+    type: 'datetime',
+    accessibility: {
+        rangeDescription: 'Range: Jul 1st 2022 to Jul 31st 2022.'
+    }
+},
+
+yAxis: {
+    title: {
+        text: null
+    }
+},
+
+tooltip: {
+    crosshairs: true,
+    shared: true,
+    valueSuffix: '°C'
+},
+
+plotOptions: {
+    series: {
+        pointStart: Date.UTC(2022, 6, 1),
+        pointIntervalUnit: 'day'
+    }
+},
+
+series: [{
+    name: 'Temperature',
+    data: average,
+    zIndex: 1,
+    marker: {
+        fillColor: 'white',
+        lineWidth: 2,
+        lineColor: Highcharts.getOptions().colors[0]
+    }
+}, {
+    name: 'Range',
+    data: range,
+    type: 'arearange',
+    lineWidth: 0,
+    linkedTo: ':previous',
+    color: Highcharts.getOptions().colors[0],
+    fillOpacity: 0.3,
+    zIndex: 0,
+    marker: {
+        enabled: false
+    }
+}]
+});
+
+    </script>
+
 @endsection
