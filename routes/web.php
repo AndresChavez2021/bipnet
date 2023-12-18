@@ -55,7 +55,7 @@ Route::group(['middleware'=>['auth']], function(){
     route::resource('/users', UserController::class);
     route::resource('/perfil', PerfilController::class);
     route::resource('/password', PasswordController::class);
-  
+
     route::resource('/roles', RolController::class);
     route::resource('/estados', EstadoController::class);
     route::resource('/categorias', CategoriaController::class);
@@ -64,7 +64,7 @@ Route::group(['middleware'=>['auth']], function(){
     route::resource('/actividades', ActividadController::class);
     route::resource('/cotizaciones', CotizacionController::class);
     /* PRONOSTICO */
-    route::get('/pronostico-ventas', [PronosticoController::class,"indexPronosticoVenta"]);
+    route::get('/pronostico-ventas', [PronosticoController::class,"indexPronosticoVenta"])->name("pronostico-ventas.index");
     route::get('/pronostico-ventas/create', [PronosticoController::class,"createPronosticoVenta"])->name("pronostico-ventas.create");
     route::post('/pronostico-ventas/store', [PronosticoController::class,"storePronosticoVenta"])->name("pronostico-ventas.store");
 
