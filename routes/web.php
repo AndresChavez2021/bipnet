@@ -63,9 +63,16 @@ Route::group(['middleware'=>['auth']], function(){
     route::resource('/oportunidades', OportunidadDeVentaController::class);
     route::resource('/actividades', ActividadController::class);
     route::resource('/cotizaciones', CotizacionController::class);
-    /* PRONOSTICO */
+
+    // TODO:PRONOSTICO
+
+    /* VENTAS */
     route::get('/pronostico-ventas', [PronosticoController::class,"indexPronosticoVenta"])->name("pronostico-ventas.index");
     route::get('/pronostico-ventas/create', [PronosticoController::class,"createPronosticoVenta"])->name("pronostico-ventas.create");
     route::post('/pronostico-ventas/store', [PronosticoController::class,"storePronosticoVenta"])->name("pronostico-ventas.store");
+
+
+    /* PRODUCTOTS */
+    route::get('/pronostico-productos', [PronosticoController::class,"indexPronosticoProducto"])->name("pronostico-productos.index");
 
 });
