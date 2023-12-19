@@ -25,9 +25,7 @@
                         <li class="{{ 'empleados' == Request::is('empleados*') ? 'active' : '' }}">
                             <a href="{{ url('/empleados') }}"><i class="fa fa-user-tie"></i> <b>Empleados</b></a>
                         </li>
-                        <li class="{{ 'clientes' == Request::is('clientes*') ? 'active' : '' }}">
-                            <a href="{{ url('/clientes') }}"><i class="fa fa-user"></i> <b>Clientes</b></a>
-                        </li>
+                        
                         <li class="{{ 'users' == Request::is('users*') ? 'active' : '' }}">
                             <a href="{{ url('/users') }}"><i class="fa fa-users"></i> <b>Usuarios</b></a>
                         </li>
@@ -46,6 +44,9 @@
                      </a>
                     <ul class="collapse list-unstyled" id="VentasMenu">
                               <!-- Agrega un nuevo ítem dentro de "Ventas" llamado "Oportunidades" -->
+                            <li class="{{ 'clientes' == Request::is('clientes*') ? 'active' : '' }}">
+                                <a href="{{ url('/clientes') }}"><i class="fa fa-user"></i> <b>Clientes</b></a>
+                            </li>
                             <li>
                                 <a href="{{ url('/oportunidades') }}"><b>Oportunidades</b></a>
                             </li>
@@ -82,9 +83,9 @@
                         <li>
                             <a href={{ url('/estados') }}><b>Etiquetas</b></a>
                         </li>
-                        <li>
+                        {{--  <li>
                             <a href={{ url('/categorias') }}><b>Categorias</b></a>
-                        </li>
+                        </li>--}}
                         <li>
                             <a href={{ url('/servicios') }}><b>Productos y servicios </b></a>
                         </li>

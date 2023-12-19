@@ -71,8 +71,9 @@
                                                         href="{{ route('cotizaciones.edit', $cotizacion->id) }}"><i
                                                             class="fa fa-fw fa-edit"></i> Edit</a>
                                                     @csrf
+                                                    {{-- 
                                                     @method('DELETE')
-                                                    {{--  <button type="submit" class="btn btn-danger btn-sm"><i
+                                                     <button type="submit" class="btn btn-danger btn-sm"><i
                                                             class="fa fa-fw fa-trash"></i> Delete</button>--}}
                                                 </form>
                                             </td>

@@ -166,7 +166,7 @@
             tooltip: {
                 crosshairs: true,
                 shared: true,
-                valueSuffix: '%',
+                valueSuffix: '',
                 /* formatter: function() {
                     return (
                         '<span style="font-size: 10px">' +

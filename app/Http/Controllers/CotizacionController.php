@@ -63,7 +63,20 @@ class CotizacionController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $idOportunidad = $request->input('idOportunidad');
+        if ($idOportunidad === null) {
+            // Obtener todas las actividades
+            $cotizaciones = Cotizacion::all();
+        } else {
+            // Obtener la oportunidad con sus cotizaciones relacionadas
+            $oportunidad = OportunidadDeVenta::with('cotizaciones')->find($idOportunidad);
+    
+            // Obtener las actividades de la oportunidad
+            $cotizaciones = $oportunidad->cotizaciones;
+        }
+        $estado = Estado::pluck('nombre', 'id');
+        //dd( $actividades);
+        return view('cotizaciones.index', compact('cotizaciones','estado'));
     }
 
     /**
